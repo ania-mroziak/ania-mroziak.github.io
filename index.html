@@ -74,7 +74,7 @@ h1,h2,h3{font-weight:300;letter-spacing:-.03em;line-height:1}
 .hero h1{font:300 clamp(64px,8.6vw,124px)/1 var(--f);letter-spacing:-.025em}
 .hero .role{margin-top:16px;color:var(--bordo);letter-spacing:.3em}
 .hero .skills{margin-top:24px;letter-spacing:.24em;font-size:clamp(12px,1.25vw,17px)}
-.hero .intro{margin:44px auto 0;max-width:58ch;font:300 clamp(18px,1.6vw,22px)/1.55 var(--f)}
+.hero .intro{margin:44px auto 0;max-width:min(88ch,82vw);text-wrap:pretty;font:300 clamp(18px,1.6vw,22px)/1.55 var(--f)}
 .hero .org{margin:40px auto 0;max-width:none;font:400 15px/1.35 var(--f)}
 .hero .wave{display:block;margin:12px auto 0;width:260px}
 .hero .frame{position:absolute;z-index:2}
@@ -151,7 +151,7 @@ ul.logos[aria-label="Marki partnerskie projektu"] li{cursor:default}
 /* oznaczenie klikalności */
 a .pic::after,.frame>a .ph::after{content:"zobacz ↗";position:absolute;right:10px;bottom:10px;font:500 12px/1 var(--f);letter-spacing:.06em;color:var(--choc);background:rgba(251,243,230,.92);padding:7px 10px;border-radius:99px;opacity:.95;transition:background .3s,color .3s;pointer-events:none}
 a:hover .pic::after,.frame>a:hover .ph::after{background:var(--bordo);color:var(--cream)}
-.clickhint{display:inline-flex;align-items:center;gap:8px;font:500 13px var(--f);color:var(--bordo);margin-top:18px}
+.clickhint{display:inline-block;font:500 13px var(--f);color:var(--bordo);margin-top:18px}
 /* czyste kadry bez ramek */
 .evgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:32px}
 @media (max-width:900px){.evgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -391,7 +391,7 @@ ul.logos[aria-label="Marki partnerskie projektu"] li img[src*="bosko"],ul.logos[
     <h1>ania mroziak</h1>
     <p class="caps role">social media manager</p>
     <p class="caps skills">strategia · copywriting · nagrania · montaż · community · moderacja</p>
-    <p class="intro">Cześć, jestem Ania. Social mediami zajmuję się od 2015 roku: zaczynałam jako content designerka <span class="nw">w agencji,</span> byłam account managerką dużych marek <span class="nw">i asystentką</span> produkcji <span class="nw">w domu</span> produkcyjnym, <span class="nw">a dziś</span> prowadzę profile marek jako freelancerka. Najbardziej lubię moment, <span class="nw">w którym</span> post zamienia się <span class="nw">w rozmowę,</span> <span class="nw">a obserwatorki</span> <span class="nw">w społeczność.</span> Wymyślam kampanie, piszę, nagrywam <span class="nw">i montuję,</span> <span class="nw">a w</span> codziennej pracy wspiera mnie zespół agentów AI.</p>
+    <p class="intro">Cześć, jestem Ania. Social mediami zajmuję się od 2015 roku: zaczynałam jako content designerka <span class="nw">w agencji,</span> byłam account managerką dużych marek <span class="nw">i asystentką</span> produkcji <span class="nw">w domu</span> produkcyjnym, <span class="nw">a dziś</span> prowadzę profile marek jako freelancerka. Najbardziej lubię moment, <span class="nw">w którym</span> post zamienia się <span class="nw">w rozmowę,</span> <span class="nw">a obserwatorki</span> <span class="nw">w społeczność.</span> Wymyślam kampanie, piszę, nagrywam <span class="nw">i montuję,</span> <span class="nw">a w codziennej</span> pracy wspiera mnie zespół agentów AI.</p>
     <p class="org">wszystkie liczby <span class="nw">w portfolio</span><br>to wyniki organiczne</p>
     <p class="clickhint">kadry <span class="nw">z oznaczeniem</span> „zobacz ↗” prowadzą do publikacji na Instagramie</p>
     <svg class="wave ink" viewBox="0 0 280 60" aria-hidden="true"><path d="M10,30 C60,10 100,50 140,30 C180,10 220,50 270,30"/></svg>
@@ -423,7 +423,7 @@ ul.logos[aria-label="Marki partnerskie projektu"] li img[src*="bosko"],ul.logos[
     <li class="rv d1"><h3>Dogadam się <span class="nw">z każdym</span></h3><p>Praca <span class="nw">w domu</span> produkcyjnym nauczyła mnie znajdować wspólny język <span class="nw">z absolutnie</span> każdym. Pracowałam <span class="nw">z aktorami,</span> takimi jak Joanna Brodzik, Joanna Koroniewska <span class="nw">i Janusz</span> Chabior, nagrywam dojrzałe kobiety, ale równie dobrze czuję się, nagrywając zwykłe dziewczyny, które pierwszy raz stoją przed kamerą.</p></li>
     <li class="rv d2"><h3>Najważniejsze jest zaangażowanie</h3><p>Zasięg jest ważny, ale to zaangażowany odbiorca buduje <span class="nw">z marką</span> relację, wzmacnia jej wizerunek <span class="nw">i ostatecznie</span> kupuje. Dlatego liczę rozmowy, nie tylko wyświetlenia: <span class="nw">w Uzdrovisco</span> mediana komentarzy pod rolką wzrosła <span class="nw">z 7</span> do 69, <span class="nw">a pod</span> zdjęciami <span class="nw">z 5</span> do 72.</p></li>
     <li class="rv"><h3>Myślę projektami, nie postami</h3><p>Uwielbiam wyzwania, nowe projekty <span class="nw">i nieszablonowe</span> akcje. <span class="nw">Z Pantalones</span> zabrałyśmy walizkę pełną polskich, jakościowych marek do Lizbony. <span class="nw">Z okazji</span> Światowego Dnia Zespołu Downa zrobiłyśmy <a href="https://www.instagram.com/p/DWJisQLDLa-/" target="_blank" rel="noopener" style="color:var(--bordo)">kampanię świadomościową <span class="nw">z Kasią</span> <span class="nw">i Marysią</span> ↗</a>. Dla Uzdrovisco odpaliłam ślepe testy <span class="nw">z testerkami.</span></p></li>
-    <li class="rv d1"><h3>Jestem wielozadaniowa</h3><p>Pracowałam jako account manager <span class="nw">w agencji</span> <span class="nw">i jako</span> asystentka produkcji <span class="nw">w domu</span> produkcyjnym. Myślę strategicznie, piszę posty <span class="nw">i copy,</span> nagrywam, montuję, moderuję <span class="nw">i produkuję</span> sesje. Do każdej <span class="nw">z tych</span> rzeczy podchodzę kreatywnie <span class="nw">i z</span> dbałością <span class="nw">o estetykę.</span></p></li>
+    <li class="rv d1"><h3>Jestem wielozadaniowa</h3><p>Pracowałam jako account manager <span class="nw">w agencji</span> <span class="nw">i jako</span> asystentka produkcji <span class="nw">w domu</span> produkcyjnym. Myślę strategicznie, piszę posty <span class="nw">i copy,</span> nagrywam, montuję, moderuję <span class="nw">i produkuję</span> sesje. Do każdej <span class="nw">z tych</span> rzeczy podchodzę kreatywnie <span class="nw">i z dbałością</span> <span class="nw">o estetykę.</span></p></li>
     <li class="rv d2"><h3>Mam zespół agentów AI</h3><p>Agenci AI usprawniają moją codzienną pracę: wspierają mnie <span class="nw">w montażu,</span> kampaniach <span class="nw">i analizie</span> wyników. AI absolutnie mnie fascynuje: ciągle odkrywam nowe możliwości, optymalizuję czas pracy <span class="nw">i zostawiam</span> więcej przestrzeni na kreację.</p></li>
   </ol>
   <div class="bigb">
