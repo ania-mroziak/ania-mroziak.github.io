@@ -1,0 +1,754 @@
+<title>Ania Mroziak · Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Styl: galeria w ręcznie rysowanych ramkach (tusz), krem z delikatną fakturą papieru, rozdziały klientów z pionową nazwą marki na kolorowym pasie. Paleta z referencji Ani (Naji, ooponka, Orage): bordo, śliwka, czekoladowy brąz, krem, pudrowy róż. Strona celowo jednomotywowa. */
+@font-face{font-family:"Beaulieu";src:url("fonts/Beaulieu-Light.ttf") format("truetype");font-weight:300;font-display:swap}
+@font-face{font-family:"Beaulieu";src:url("fonts/Beaulieu-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:"Beaulieu";src:url("fonts/Beaulieu-Medium.ttf") format("truetype");font-weight:500;font-display:swap}
+@font-face{font-family:"Beaulieu";src:url("fonts/Beaulieu-SemiBold.ttf") format("truetype");font-weight:600;font-display:swap}
+:root{
+  color-scheme:light;
+  --cream:#FBF3E6; --choc:#2A0E04; --bordo:#750928; --plum:#6B2040; --pink:#E9C9CF; --mute:#8A6A60;
+  --f:"Beaulieu","Avenir Next",system-ui,sans-serif;
+  --g:max(20px,env(safe-area-inset-left,0px));
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--choc);font:400 17px/1.55 var(--f);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.paper{background-color:var(--cream);background-image:radial-gradient(rgba(42,14,4,.06) 1px,transparent 1px);background-size:7px 7px}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-underline-offset:3px}
+a:focus-visible{outline:2px solid currentColor;outline-offset:4px;border-radius:4px}
+p,h1,h2,h3,figure,ul,ol{margin:0}
+h1,h2,h3{font-weight:300;letter-spacing:-.03em;line-height:1}
+.caps{font:400 13px/1.4 var(--f);letter-spacing:.18em;text-transform:uppercase}
+.num{font-variant-numeric:tabular-nums}
+.tag{display:inline-block;font:600 11px var(--f);letter-spacing:.14em;text-transform:uppercase;border:1.5px solid currentColor;border-radius:99px;padding:6px 11px}
+.ink{fill:none;stroke:var(--choc);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.star{position:absolute;pointer-events:none;animation:tw 4s ease-in-out infinite}
+.star:nth-of-type(2n){animation-delay:1.3s}
+@keyframes tw{50%{transform:scale(.8) rotate(12deg);opacity:.6}}
+
+/* menu */
+.bar{position:sticky;top:0;z-index:50;background:var(--bordo);color:var(--cream)}
+.bar .in{max-width:1440px;margin:0 auto;padding:13px var(--g);display:flex;gap:24px;align-items:center;overflow-x:auto;scrollbar-width:none}
+.bar .in::-webkit-scrollbar{display:none}
+.bar a{text-decoration:none;white-space:nowrap;font:400 12px var(--f);letter-spacing:.18em;text-transform:uppercase;opacity:.9}
+.bar a:hover{opacity:1;text-decoration:underline}
+.bar .me{margin-right:auto;font:500 16px var(--f);letter-spacing:.02em;text-transform:none}
+
+/* ramka */
+.frame{position:relative;transform:rotate(var(--r,0deg));transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.frame>a,.frame>.box{display:block;position:relative;aspect-ratio:4/5;text-decoration:none;color:inherit}
+.frame .ph{position:absolute;inset:4.6% 4.6%;overflow:hidden;box-shadow:0 0 0 6px var(--bordo);background:var(--plum)}
+.frame.arch .ph{inset:3.4% 3.6% 3.6%;border-radius:50% 50% 0 0/38% 38% 0 0}
+.frame.oval .ph{inset:3.6% 4%;border-radius:50%}
+.frame .ph img,.frame .ph video{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.frame svg.fr{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.frame:hover{transform:rotate(0deg) translateY(-6px)}
+.frame:hover .ph img{transform:scale(1.04)}
+.frame figcaption{text-align:center;margin-top:18px;font:400 12px/1.5 var(--f);letter-spacing:.16em;text-transform:uppercase}
+.frame figcaption span{display:block;letter-spacing:.03em;text-transform:none;font-size:14px;opacity:.85}
+
+/* owal z liczbą */
+.ostat{container-type:inline-size;width:100%;position:relative;aspect-ratio:31/20;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 12%}
+.ostat svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.ostat a{color:inherit}
+.ostat a::after{content:"";position:absolute;inset:0;z-index:3;border-radius:50%}
+.ostat:has(a){cursor:pointer;transition:transform .3s}
+.ostat:has(a):hover{transform:scale(1.04)}
+.ostat b{font:300 22cqw/1 var(--f);letter-spacing:-.04em;color:var(--bordo);white-space:nowrap}
+.ostat s{text-decoration:none;font-size:max(11px,.22em);color:var(--mute);margin-left:6px;vertical-align:1.7em;letter-spacing:0}
+.ostat>span{font:400 max(10px,4.4cqw)/1.3 var(--f);letter-spacing:.1em;text-transform:uppercase;margin-top:6px}
+
+/* pojawianie się */
+.rv{opacity:0;transform:translateY(36px) rotate(var(--r,0deg));transition:opacity 1s ease,transform 1.1s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:rotate(var(--r,0deg))}
+.rv.in.frame:hover{transform:rotate(0deg) translateY(-6px)}
+.d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.36s}.d4{transition-delay:.48s}
+
+/* START */
+.hero{position:relative;min-height:clamp(560px,calc(100vh - 44px),820px);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.hero .center{position:relative;z-index:3;text-align:center;padding:80px var(--g)}
+.hero h1{font:300 clamp(64px,8.6vw,124px)/1 var(--f);letter-spacing:-.025em}
+.hero .role{margin-top:16px;color:var(--bordo);letter-spacing:.3em}
+.hero .skills{margin-top:24px;letter-spacing:.24em;font-size:clamp(12px,1.25vw,17px)}
+.hero .intro{margin:44px auto 0;max-width:58ch;font:300 clamp(18px,1.6vw,22px)/1.55 var(--f)}
+.hero .org{margin:40px auto 0;max-width:none;font:400 15px/1.35 var(--f)}
+.hero .wave{display:block;margin:12px auto 0;width:260px}
+.hero .frame{position:absolute;z-index:2}
+.hero .h1f{left:5%;top:9%;width:clamp(150px,15vw,220px);--r:-3deg}
+.hero .h2f{right:6%;top:7%;width:clamp(140px,14.5vw,210px);--r:3deg}
+.hero .h3f{left:17%;bottom:9%;width:clamp(130px,13vw,190px);--r:2deg}
+.hero .h4f{right:18%;bottom:6%;width:clamp(130px,13.5vw,200px);--r:-2deg}
+
+/* pasek marek */
+.marq{background:var(--bordo);color:var(--cream);overflow:hidden;white-space:nowrap;padding:20px 0}
+.marq div{display:inline-block;animation:mq 50s linear infinite;font:300 clamp(26px,3vw,40px)/1 var(--f);letter-spacing:-.01em}
+.marq i{font-style:normal;color:var(--pink);margin:0 .6em;font-size:.6em;vertical-align:middle}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* wyróżniki */
+.why{padding:130px var(--g)}
+.why .in{max-width:1240px;margin:0 auto}
+.why h2{text-align:center;font-size:clamp(46px,6vw,88px)}
+.why .sub{text-align:center;margin-top:14px;color:var(--bordo)}
+.why ol{list-style:none;padding:0;margin-top:80px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:64px 56px;counter-reset:w}
+.why li{counter-increment:w;text-align:center}
+.why li:before{content:"0" counter(w);display:block;font:300 44px/1 var(--f);color:var(--bordo);margin-bottom:16px}
+.why h3{font:400 24px/1.15 var(--f);letter-spacing:-.01em}
+.why li p{font-size:16px;margin-top:12px;opacity:.85}
+
+.bigb{margin-top:120px;border-top:1px solid rgba(42,14,4,.2);padding-top:56px}
+.bigb h3{text-align:center;font:300 clamp(28px,3.2vw,44px)/1.15 var(--f);letter-spacing:-.02em;max-width:20ch;text-wrap:balance;margin:16px auto 0}
+.lgroup{max-width:1100px;margin:64px auto 0;display:grid;grid-template-columns:260px minmax(0,1fr);gap:24px 40px;align-items:center}
+.lg-h{font:400 15px/1.4 var(--f);margin:0}.lg-h b{display:block;font-weight:500;font-size:19px;color:var(--bordo);margin-bottom:4px}.lg-h span{font-size:13px;letter-spacing:.06em;color:var(--mute)}
+.logos{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px 18px}
+.logos li{container-type:inline-size;width:100%;counter-increment:none;position:relative;aspect-ratio:31/20;display:grid;place-items:center;text-align:center;color:var(--bordo);font:400 20px/1.05 var(--f);transform:rotate(var(--r,0deg));transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.logos li svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.logos li span{position:relative;padding:0 16%;font-size:calc(12.5cqw * var(--s,1))}
+.logos li small{display:block;font:500 .5em var(--f);letter-spacing:.2em;text-transform:uppercase;color:var(--choc);margin-bottom:4px}
+.logos li:before{content:none!important}
+.logos li:hover{transform:rotate(0) scale(1.05)}
+.logos li.rv.in:hover{transform:rotate(0) scale(1.05)}
+@media (max-width:900px){.lgroup{grid-template-columns:minmax(0,1fr)}.logos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* zdjęcia bez rysowanych ramek: czysty kadr z zaokrągleniem */
+.frame svg.fr{display:none}
+.frame .ph,.frame.arch .ph,.frame.oval .ph{inset:0;border-radius:10px;box-shadow:none}
+.frame{--r:0deg !important}
+.frame figcaption{margin-top:14px}
+/* archiwum 2015 */
+.arch{padding:120px var(--g)}
+.arch .in{max-width:1180px;margin:0 auto}
+.arch h2{text-align:center;font-size:clamp(46px,6vw,88px);margin-top:12px}
+.arch h2 em{font-style:normal;color:var(--bordo)}
+.arch .lead{text-align:center;max-width:58ch;margin:22px auto 0;font-size:18px;line-height:1.6}
+.archgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 28px;margin-top:64px}
+.archgrid .pic img{filter:saturate(1.05)}
+.archgrid figcaption{font-size:15px}
+.arch-n{display:block;margin-top:6px;font:500 12px var(--f);letter-spacing:.06em;color:var(--bordo)}
+@media (max-width:900px){.archgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* marki partnerskie bez ramek */
+ul.logos li svg{display:none}
+ul.logos li{background:#fff;border-radius:10px;aspect-ratio:auto;height:96px;transform:none}
+ul.logos li span{padding:0 10px}
+ul.logos[aria-label="Marki partnerskie projektu"] li,ul.logos[aria-label="Marki partnerskie projektu"] li:hover,ul.logos[aria-label="Marki partnerskie projektu"] li.rv.in:hover{transform:none}
+ul.logos[aria-label="Marki partnerskie projektu"] li{cursor:default}
+/* logotypy marek */
+.lgroup .logos li{aspect-ratio:auto;height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:#fff!important;border-radius:10px;transform:none;padding:18px 22px;container-type:normal}
+.lgroup .logos li img{max-width:78%;max-height:46px;object-fit:contain;display:block}
+.lgroup .logos li img[src*="chupachups"]{max-height:70px}
+.lgroup .logos li img[src*="carrefour"]{max-height:58px}
+.lgroup .logos li img[src*="olx"]{max-height:38px}
+.lgroup .logos li img[src*="bareminerals"]{max-height:22px}
+.lgroup .logos li img[src*="lauramercier"]{max-height:26px;max-width:90%}
+.lgroup .logos li img[src*="pupa"]{max-height:40px}
+.lgroup .logos li .lsub{font:500 11px var(--f);letter-spacing:.14em;text-transform:uppercase;color:var(--choc)}
+.lgroup .logos li:hover{transform:translateY(-3px)}
+/* oznaczenie klikalności */
+a .pic::after,.frame>a .ph::after{content:"zobacz ↗";position:absolute;right:10px;bottom:10px;font:500 12px/1 var(--f);letter-spacing:.06em;color:var(--choc);background:rgba(251,243,230,.92);padding:7px 10px;border-radius:99px;opacity:.95;transition:background .3s,color .3s;pointer-events:none}
+a:hover .pic::after,.frame>a:hover .ph::after{background:var(--bordo);color:var(--cream)}
+.clickhint{display:inline-flex;align-items:center;gap:8px;font:500 13px var(--f);color:var(--bordo);margin-top:18px}
+/* czyste kadry bez ramek */
+.evgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:32px}
+@media (max-width:900px){.evgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.testers{margin-top:56px}
+.tgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:14px}
+.pic.sq{aspect-ratio:1/1}
+@media (max-width:900px){.tgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ugal{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;margin-top:48px;align-items:start}
+.tile{margin:0}
+.tile a{text-decoration:none;color:inherit;display:block}
+.pic{position:relative;overflow:hidden;border-radius:10px;aspect-ratio:4/5;background:var(--plum)}
+.pic img,.pic video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+a:hover .pic img{transform:scale(1.03)}
+.tile figcaption{margin-top:14px;font:400 14px/1.5 var(--f)}
+.tile figcaption b{display:block;font:400 12px/1.4 var(--f);letter-spacing:.16em;text-transform:uppercase;margin-bottom:2px}
+.tile.wide{margin-top:64px}
+.tile.wide .pic{aspect-ratio:16/9;background:#000}
+.camp2 .pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.camp2 h4{margin:8px 0 0;font:300 clamp(30px,3vw,44px)/1.05 var(--f);letter-spacing:-.02em}
+.camp2>p:not(.caps){font-size:16px;line-height:1.6;margin-top:12px;max-width:56ch}
+@media (max-width:900px){.ugal{grid-template-columns:minmax(0,1fr)}}
+
+/* rozdział klienta */
+.ch{display:grid;grid-template-columns:minmax(300px,30vw) minmax(0,1fr);position:relative}
+.side{background:var(--bordo);color:var(--cream);position:relative}
+.side .stick{position:sticky;top:44px;height:clamp(640px,calc(100vh - 44px),1000px);padding:40px clamp(24px,3vw,40px)}
+.side .meta{font:500 13px var(--f);letter-spacing:.02em;position:relative;z-index:2}
+.side .vert{position:absolute;right:-.06em;top:28px;bottom:28px;writing-mode:vertical-rl;transform:rotate(180deg);font:600 clamp(100px,10.6vw,160px)/.8 var(--f);letter-spacing:-.06em;color:var(--pink);white-space:nowrap;overflow:hidden;text-align:right}
+.side .lead{position:absolute;left:clamp(24px,3vw,40px);bottom:120px;width:min(50%,230px);font:300 clamp(19px,1.7vw,24px)/1.22 var(--f);letter-spacing:-.015em}
+.side .tag{position:absolute;left:clamp(24px,3vw,40px);bottom:44px}
+.side.plum{background:var(--plum)}
+.side.choc{background:var(--choc)}
+.main{padding:64px clamp(24px,4vw,64px) 120px;min-width:0}
+.main .top{display:flex;justify-content:flex-end}
+.gal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:56px 40px;margin-top:48px;align-items:start}
+.gal .frame:nth-child(2){margin-top:40px}
+.gal .frame:nth-child(4){margin-top:-10px}
+.ovals{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin-top:90px}
+.ovals .ostat:nth-child(even){margin-top:50px}
+.note{font:400 14px/1.5 var(--f);color:var(--mute);margin-top:22px;max-width:62ch}
+.blk{margin-top:110px}
+.blk h3{font-size:clamp(40px,4.6vw,68px)}
+.blk h3 em{font-style:normal;color:var(--bordo)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
+.camp{border-top:1px solid rgba(42,14,4,.2);padding:18px 0}
+.camp h4{margin:0;font:400 24px/1.15 var(--f);letter-spacing:-.01em}
+.camp p{font-size:15px;margin-top:6px;opacity:.85}
+.lk{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:10px;font:500 13px var(--f);letter-spacing:.04em}
+.lk a{color:var(--bordo);text-decoration:none;border-bottom:1px solid currentColor}
+#chart svg{width:100%;height:auto;display:block}
+.legend{display:flex;gap:18px;margin:14px 0 8px;font:400 12px var(--f);letter-spacing:.12em;text-transform:uppercase}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px;vertical-align:-1px}
+
+/* suwak przed/po */
+.ba{position:absolute;inset:0;overflow:hidden;--p:50%;user-select:none;border-radius:10px}
+.ba .side2{position:absolute;inset:0;display:grid;grid-template-rows:repeat(4,1fr)}
+.ba .side2 img{width:100%;height:100%;object-fit:cover}
+.ba .before{clip-path:inset(0 calc(100% - var(--p)) 0 0);filter:saturate(.55)}
+.ba .handle{position:absolute;top:0;bottom:0;left:var(--p);width:2px;background:var(--cream);pointer-events:none}
+.ba .handle:after{content:"‹ ›";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50px;height:50px;border-radius:50%;background:var(--bordo);color:var(--cream);display:grid;place-items:center;font:500 17px var(--f)}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba .t{position:absolute;top:12px;z-index:2;font:500 11px var(--f);letter-spacing:.12em;text-transform:uppercase;background:var(--cream);padding:6px 10px;border-radius:99px;pointer-events:none}
+.feedframe{aspect-ratio:838/1484 !important}
+
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{font:400 11px var(--f);letter-spacing:.14em;text-transform:uppercase;text-align:left;padding:0 0 10px;border-bottom:1.5px solid var(--choc)}
+td{padding:10px 0;border-bottom:1px solid rgba(42,14,4,.15)}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+td a{text-decoration:none;border-bottom:1px solid rgba(117,9,40,.4)}
+.tw{overflow-x:auto}
+
+.cred{display:grid;grid-template-columns:120px minmax(0,1fr);gap:8px 16px;margin-top:26px;font-size:17px}
+.cred b{font:400 11px var(--f);letter-spacing:.16em;text-transform:uppercase;color:var(--mute);padding-top:5px;font-weight:400}
+.story{font-size:18px;line-height:1.55;margin-top:22px;max-width:46ch}
+.vidframe .ph video{object-fit:cover}
+
+/* AI */
+.ai{padding:130px var(--g)}
+.ai .in{max-width:1240px;margin:0 auto}
+.ai h2{text-align:center;font-size:clamp(46px,6vw,88px)}
+.ai .lead{text-align:center;max-width:50ch;margin:22px auto 0;font-size:18px}
+.ai .ovals{grid-template-columns:repeat(3,minmax(0,1fr));max-width:900px;margin-left:auto;margin-right:auto;margin-top:64px}
+.map{margin-top:72px;overflow-x:auto}
+.map svg{min-width:860px;width:100%;height:auto;display:block}
+
+/* marki */
+.cl{padding:120px var(--g)}
+.cl .in{max-width:1240px;margin:0 auto}
+.cl h2{text-align:center;font-size:clamp(46px,6vw,88px)}
+.brands{text-align:center;font:300 clamp(24px,3vw,42px)/1.4 var(--f);letter-spacing:-.02em;margin-top:40px}
+.brands span{white-space:nowrap}
+.brands i{font-style:normal;color:var(--bordo);margin:0 .35em;font-size:.55em;vertical-align:middle}
+.prev{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 40px;margin-top:90px;align-items:start}
+.card{display:block;text-decoration:none;border-top:1px solid rgba(42,14,4,.25);padding-top:14px}
+.card h4{margin:6px 0 0;font:400 22px/1.15 var(--f)}
+
+/* kontakt */
+.contact{background:var(--bordo);color:var(--cream);padding:140px var(--g) 60px;position:relative;overflow:hidden}
+.contact .card2{position:relative;width:min(640px,100%);aspect-ratio:64/46;margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 8%}
+.contact .card2 svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.contact .n{font:300 clamp(40px,5.4vw,64px)/1 var(--f);letter-spacing:-.03em}
+.contact .r{margin-top:12px;color:var(--pink)}
+.contact .l{font:400 clamp(14px,1.4vw,18px)/1.7 var(--f);margin-top:24px}
+.contact .m{font:500 clamp(17px,1.8vw,22px) var(--f);margin-top:20px;text-decoration:none;border-bottom:1.5px solid var(--cream)}
+.contact .fine{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:110px;font:400 13px/1.45 var(--f);opacity:.75;max-width:1440px;margin-left:auto;margin-right:auto}
+
+@media (max-width:900px){
+  .hero{min-height:0}
+  .hero .center{padding:56px var(--g) 40px}
+  .hero .frame{position:relative;left:auto;right:auto;top:auto;bottom:auto;width:auto}
+  .hero .frames{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 28px;padding:20px var(--g) 64px}
+  .why ol{grid-template-columns:minmax(0,1fr);gap:48px}
+  .ch{grid-template-columns:minmax(0,1fr)}
+  .side .stick{position:relative;top:0;height:auto;min-height:0;padding:28px var(--g) 32px}
+  .side .vert{position:static;writing-mode:horizontal-tb;transform:none;font-size:clamp(64px,17vw,120px);margin-top:18px;text-align:left}
+  .side .lead{position:static;width:auto;margin-top:18px}
+  .side .tag{position:static;margin-top:20px}
+  .gal{grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 24px}
+  .gal .frame:nth-child(n){margin-top:0}
+  .ovals,.ai .ovals{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ovals .ostat:nth-child(even){margin-top:24px}
+  .two{grid-template-columns:minmax(0,1fr);gap:48px}
+  .prev{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (min-width:901px){.hero .frames{display:contents}}
+
+/* freelance: duże filmy z dźwiękiem */
+.side.rose{background:var(--pink);color:var(--choc)}
+.side.rose .vert{color:var(--bordo)}
+.side.rose .tag{border-color:var(--bordo);color:var(--bordo)}
+.flhead{margin-top:40px;display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.flhead h3{font-size:clamp(40px,4.6vw,68px)}
+.flhead h3 em{font-style:normal;color:var(--bordo)}
+.flhead .note{margin:0;max-width:34ch}
+.vgrid{display:flex;flex-wrap:wrap;justify-content:center;gap:56px 32px;margin-top:44px}
+.vt{margin:0;flex:0 1 calc((100% - 64px)/3);min-width:0}
+.vt:nth-child(3n+2){margin-top:48px}
+.pic.v916{aspect-ratio:9/16;background:var(--choc);box-shadow:0 18px 40px -22px rgba(42,14,4,.55)}
+.vt video{cursor:pointer}
+.snd{position:absolute;left:10px;bottom:10px;display:flex;align-items:center;gap:7px;border:0;cursor:pointer;font:500 12px/1 var(--f);letter-spacing:.06em;color:var(--cream);background:var(--bordo);padding:8px 12px 8px 10px;border-radius:99px;transition:background .3s,color .3s}
+.snd i{font-style:normal;font-size:14px}
+.snd[aria-pressed="true"]{background:var(--cream);color:var(--bordo)}
+.vt .go{position:absolute;right:10px;bottom:10px;font:500 12px/1 var(--f);letter-spacing:.06em;color:var(--choc);background:rgba(251,243,230,.94);padding:8px 11px;border-radius:99px;text-decoration:none}
+.vt .go:hover,.snd:hover{background:var(--choc);color:var(--cream)}
+.vt figcaption{margin-top:16px}
+.vt .br{display:block;font:500 11px/1.4 var(--f);letter-spacing:.16em;text-transform:uppercase;color:var(--bordo)}
+.vt figcaption>a{text-decoration:none;color:inherit}
+.vt figcaption b{display:block;font:400 clamp(22px,2vw,28px)/1.1 var(--f);letter-spacing:-.015em;margin-top:4px}
+.vt figcaption p{font:400 14px/1.5 var(--f);margin-top:8px;opacity:.85}
+.vt .lnk a{display:inline-block;margin-top:10px;font:500 13px var(--f);letter-spacing:.04em;color:var(--bordo);text-decoration:none;border-bottom:1px solid currentColor}
+@media (max-width:1100px){.vt{flex-basis:calc((100% - 32px)/2)}.vt:nth-child(3n+2){margin-top:0}.vt:nth-child(even){margin-top:40px}}
+@media (max-width:560px){.vt{flex-basis:100%;max-width:340px;margin-left:auto;margin-right:auto}.vt:nth-child(even){margin-top:0}}
+.quotes{list-style:none;padding:0;margin:28px auto 0;max-width:1000px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.quotes li{background:#fff;border-radius:18px 18px 18px 4px;padding:20px 20px 16px;transform:rotate(var(--r,0deg));box-shadow:0 10px 26px -18px rgba(42,14,4,.45)}
+.quotes li:before{content:none!important}
+.quotes p{margin:0;font:400 19px/1.3 var(--f);letter-spacing:-.01em;color:var(--choc)}
+.quotes span{display:block;margin-top:10px;font:500 10.5px/1.3 var(--f);letter-spacing:.14em;text-transform:uppercase;color:var(--bordo)}
+@media (max-width:900px){.quotes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cms{display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-top:12px}
+.cm{display:inline-block;max-width:100%;background:#fff;color:var(--choc);font:400 13.5px/1.35 var(--f);letter-spacing:0;text-transform:none;padding:7px 12px;border-radius:14px 14px 14px 3px;box-shadow:0 6px 16px -12px rgba(42,14,4,.5)}
+.frame figcaption .cms{align-items:center}
+ul.logos[aria-label="Marki partnerskie projektu"] li{display:flex;align-items:center;justify-content:center;padding:14px 20px}
+ul.logos[aria-label="Marki partnerskie projektu"] li img{max-width:80%;max-height:40px;object-fit:contain;display:block}
+ul.logos[aria-label="Marki partnerskie projektu"] li img[src*="szmatsklad"]{max-height:66px}
+ul.logos[aria-label="Marki partnerskie projektu"] li img[src*="owca"],ul.logos[aria-label="Marki partnerskie projektu"] li img[src*="nashe"]{max-height:30px}
+ul.logos[aria-label="Marki partnerskie projektu"] li img[src*="annabelle"],ul.logos[aria-label="Marki partnerskie projektu"] li img[src*="wings"],ul.logos[aria-label="Marki partnerskie projektu"] li img[src*="uzdrovisco"]{max-height:24px;max-width:84%}
+ul.logos[aria-label="Marki partnerskie projektu"] li img[src*="bosko"],ul.logos[aria-label="Marki partnerskie projektu"] li img[src*="anis"]{max-height:52px}
+.lgroup .logos li img[src*="fishermansfriend"],.lgroup .logos li img[src*="lowicz"]{max-height:66px}
+.lgroup .logos li img[src*="christianlaurent"],.lgroup .logos li img[src*="rozwojowamama"]{max-height:56px}
+.lgroup .logos li img[src*="uzdrovisco"],.lgroup .logos li img[src*="strivectin"],.lgroup .logos li img[src*="oeparol"]{max-height:26px;max-width:86%}
+.lgroup .logos li img[src*="dicoflor"],.lgroup .logos li img[src*="pantalones"]{max-height:30px}
+.vt .vnum{font:500 12px/1.4 var(--f)!important;letter-spacing:.04em;color:var(--bordo);opacity:1!important}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:rotate(var(--r,0deg))}
+  html{scroll-behavior:auto}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <g id="rect">
+    <path vector-effect="non-scaling-stroke" d="M22,14 C130,8 270,20 378,12 C386,140 372,360 382,486 C270,494 130,480 18,490 C12,360 26,140 22,14Z"/>
+    <path vector-effect="non-scaling-stroke" d="M34,26 C140,20 262,30 366,24 C374,150 362,350 370,474 C262,480 140,468 30,476 C26,350 38,150 34,26Z"/>
+    <path vector-effect="non-scaling-stroke" d="M22,14 c-16,-5 -26,9 -17,17 c8,6 17,-2 11,-9"/><path vector-effect="non-scaling-stroke" d="M378,12 c15,-6 26,6 18,15 c-6,8 -17,1 -12,-6"/>
+    <path vector-effect="non-scaling-stroke" d="M382,486 c16,5 25,-9 16,-17 c-8,-6 -17,2 -11,9"/><path vector-effect="non-scaling-stroke" d="M18,490 c-15,6 -26,-6 -18,-15 c6,-8 17,-1 12,6"/>
+    <path vector-effect="non-scaling-stroke" d="M178,6 c8,-12 36,-12 44,0"/><path vector-effect="non-scaling-stroke" d="M182,496 c8,11 30,11 38,0"/>
+  </g>
+  <g id="arch">
+    <path vector-effect="non-scaling-stroke" d="M18,488 L20,190 C22,70 110,10 200,10 C292,10 380,72 382,192 L384,490 C270,496 130,484 18,488Z"/>
+    <path vector-effect="non-scaling-stroke" d="M32,476 L34,194 C36,86 118,24 200,24 C284,24 366,88 368,196 L370,478 C262,484 136,472 32,476Z"/>
+    <path vector-effect="non-scaling-stroke" d="M200,10 c-6,-14 6,-22 12,-14"/><path vector-effect="non-scaling-stroke" d="M18,488 c-14,4 -20,-10 -10,-14"/><path vector-effect="non-scaling-stroke" d="M384,490 c14,4 20,-10 10,-14"/>
+  </g>
+  <g id="ov">
+    <ellipse vector-effect="non-scaling-stroke" cx="200" cy="250" rx="186" ry="238"/>
+    <ellipse vector-effect="non-scaling-stroke" cx="200" cy="250" rx="172" ry="224"/>
+    <path vector-effect="non-scaling-stroke" d="M182,6 c-14,-10 -26,4 -14,10 M218,6 c14,-10 26,4 14,10 M190,8 c4,6 16,6 20,0"/>
+  </g>
+  <path id="ovl" vector-effect="non-scaling-stroke" d="M30,80 C26,30 110,8 128,10 C200,6 236,40 232,84 C230,134 170,160 122,158 C60,160 32,126 30,80Z M40,84 C40,40 108,20 126,20 C190,18 222,48 220,86 C218,128 166,148 124,148 C68,148 40,120 40,84Z"/>
+  <path id="star" d="M35,6 L39,30 L64,35 L39,40 L35,64 L31,40 L6,35 L31,30Z"/>
+</defs></svg>
+
+<nav class="bar" aria-label="Menu"><div class="in">
+  <a class="me" href="#start">ania mroziak</a>
+</div></nav>
+
+<header class="hero paper" id="start">
+  <svg class="star ink" style="left:12%;top:14%" width="54" height="54" viewBox="0 0 70 70" aria-hidden="true"><use href="#star"/></svg>
+  <svg class="star ink" style="left:17%;top:22%" width="22" height="22" viewBox="0 0 70 70" aria-hidden="true"><use href="#star"/></svg>
+  <svg class="star ink" style="right:8%;top:52%" width="38" height="38" viewBox="0 0 70 70" aria-hidden="true"><use href="#star"/></svg>
+  <svg class="star ink" style="left:8%;top:56%" width="28" height="28" viewBox="0 0 70 70" aria-hidden="true"><use href="#star"/></svg>
+  <div class="center">
+    <h1>ania mroziak</h1>
+    <p class="caps role">social media manager</p>
+    <p class="caps skills">strategia · copywriting · nagrania · montaż · community · moderacja</p>
+    <p class="intro">Cześć, jestem Ania. Social mediami zajmuję się od 2015 roku: zaczynałam jako content designerka w agencji, byłam account managerką dużych marek i asystentką produkcji w domu produkcyjnym, a dziś prowadzę profile marek jako freelancerka. Najbardziej lubię moment, w którym post zamienia się w rozmowę, a obserwatorki w społeczność. Wymyślam kampanie, piszę, nagrywam i montuję, a w codziennej pracy wspiera mnie zespół agentów AI.</p>
+    <p class="org">wszystkie liczby w portfolio<br>to wyniki organiczne</p>
+    <p class="clickhint">kadry z oznaczeniem „zobacz ↗” prowadzą do publikacji na Instagramie</p>
+    <svg class="wave ink" viewBox="0 0 280 60" aria-hidden="true"><path d="M10,30 C60,10 100,50 140,30 C180,10 220,50 270,30"/></svg>
+  </div>
+</header>
+
+
+<section class="arch paper" id="archiwum"><div class="in">
+  <p class="caps rv" style="text-align:center;color:var(--bordo)">archiwum · jesień 2015</p>
+  <h2 class="rv">kiedyś social media <em>wyglądały tak.</em></h2>
+  <p class="lead rv d1">A ja to dobrze pamiętam, bo te posty robiłam ja. Jesień 2015, mój start w agencji: filtry, hashtagi do końca opisu, lizaki w wymuszonej perspektywie i Mentosy na kuchennej wadze. Od tamtej pory zmieniło się prawie wszystko. Oprócz tego, że nadal kocham to robić.</p>
+  <div class="archgrid">
+      <figure class="tile rv"><a href="https://www.instagram.com/p/9LmEB4y9Qw/" target="_blank" rel="noopener"><div class="pic" style="aspect-ratio:1/1"><img src="media/arch_mentos_adam.jpg" alt="Archiwalny post Mentos z 23.10.2015" loading="lazy"></div></a><figcaption><b>Mentos · 23.10.2015</b>„Nawet Adam nie może oprzeć się Mentos #mint… Komu szykuje się boski piąteczek?”<span class="arch-n">849 ♥ · 20 komentarzy</span></figcaption></figure>
+      <figure class="tile rv d1"><a href="https://www.instagram.com/p/9I3RcXRn90/" target="_blank" rel="noopener"><div class="pic" style="aspect-ratio:1/1"><img src="media/arch_chupa_kopniak.jpg" alt="Archiwalny post Chupa Chups z 22.10.2015" loading="lazy"></div></a><figcaption><b>Chupa Chups · 22.10.2015</b>„KONKURS! Bierzemy pełen rozpęd i… uderzamy z konkursem! Pokażcie nam, jak wygląda Wasza #slodkaperspektywa”<span class="arch-n">986 ♥ · 14 komentarzy</span></figcaption></figure>
+      <figure class="tile rv d2"><a href="https://www.instagram.com/p/9tJJ_gy9X_/" target="_blank" rel="noopener"><div class="pic" style="aspect-ratio:1/1"><img src="media/arch_mentos_waga.jpg" alt="Archiwalny post Mentos z 5.11.2015" loading="lazy"></div></a><figcaption><b>Mentos · 5.11.2015</b>„Busy day? W krótkiej przerwie tkwi największa przyjemność! Małe szczęście na wagę #mentos!”<span class="arch-n">914 ♥ · 22 komentarze</span></figcaption></figure>
+      <figure class="tile rv"><a href="https://www.instagram.com/p/9GnN1URn11/" target="_blank" rel="noopener"><div class="pic" style="aspect-ratio:1/1"><img src="media/arch_chupa_palma.jpg" alt="Archiwalny post Chupa Chups z 21.10.2015" loading="lazy"></div></a><figcaption><b>Chupa Chups · 21.10.2015</b>„Jaka u Was pogoda? U nas cały czas Chupa Chupsowa!”<span class="arch-n">244 ♥ · 7 komentarzy</span></figcaption></figure>
+      <figure class="tile rv d1"><a href="https://www.instagram.com/p/9tXy6Oy9Tm/" target="_blank" rel="noopener"><div class="pic" style="aspect-ratio:1/1"><img src="media/arch_mentos_10000.jpg" alt="Archiwalny post Mentos z 5.11.2015" loading="lazy"></div></a><figcaption><b>Mentos · 5.11.2015</b>„#mentos maniaków jest już ponad 10000! Zostańcie z nami, bo dopiero się rozkręcamy!”<span class="arch-n">865 ♥ · 35 komentarzy</span></figcaption></figure>
+      <figure class="tile rv d2"><a href="https://www.instagram.com/p/9JTgdSRn8o/" target="_blank" rel="noopener"><div class="pic" style="aspect-ratio:1/1"><img src="media/arch_chupa_chmury.jpg" alt="Archiwalny post Chupa Chups z 22.10.2015" loading="lazy"></div></a><figcaption><b>Chupa Chups · 22.10.2015</b>„Taki #chupachups, że jesteśmy w niebie. Kto dzisiaj buja w obłokach?”<span class="arch-n">216 ♥ · 4 komentarze</span></figcaption></figure>
+  </div>
+</div></section>
+
+<div class="marq" aria-label="Marki, z którymi pracowałam"><div>Uzdrovisco<i>✦</i>Pantalones<i>✦</i>Doctor Brew<i>✦</i>Oeparol<i>✦</i>Pupa Milano<i>✦</i>Lunaby<i>✦</i>Revlon<i>✦</i>bareMinerals<i>✦</i>Laura Mercier<i>✦</i>StriVectin<i>✦</i>Mentos<i>✦</i>Korres<i>✦</i>Uzdrovisco<i>✦</i>Pantalones<i>✦</i>Doctor Brew<i>✦</i>Oeparol<i>✦</i>Pupa Milano<i>✦</i>Lunaby<i>✦</i>Revlon<i>✦</i>bareMinerals<i>✦</i>Laura Mercier<i>✦</i>StriVectin<i>✦</i>Mentos<i>✦</i>Korres<i>✦</i></div></div>
+
+<section class="why paper" id="wyrozniki"><div class="in">
+  <h2 class="rv">co mnie wyróżnia</h2>
+  <p class="caps sub rv d1">sześć rzeczy, które marki dostają w pakiecie</p>
+  <ol>
+    <li class="rv"><h3>Mówię językiem odbiorcy</h3><p>Pracuję dla Uzdrovisco, którego grupa docelowa to dojrzałe kobiety: spokojny ton, prawdziwe twarze, edukacja o składnikach. W portfolio zobaczysz też Pantalones, polską markę z certyfikowaną bielizną organiczną i zdecydowanie młodszą odbiorczynią. Do niej dopasowałam język, humor i styl prowadzenia profilu.</p></li>
+    <li class="rv d1"><h3>Dogadam się z każdym</h3><p>Praca w domu produkcyjnym nauczyła mnie znajdować wspólny język z absolutnie każdym. Pracowałam z aktorami, takimi jak Joanna Brodzik, Joanna Koroniewska i Janusz Chabior, nagrywam dojrzałe kobiety, ale równie dobrze czuję się, nagrywając zwykłe dziewczyny, które pierwszy raz stoją przed kamerą.</p></li>
+    <li class="rv d2"><h3>Najważniejsze jest zaangażowanie</h3><p>Zasięg jest ważny, ale to zaangażowany odbiorca buduje z marką relację, wzmacnia jej wizerunek i ostatecznie kupuje. Dlatego liczę rozmowy, nie tylko wyświetlenia: w Uzdrovisco mediana komentarzy pod rolką wzrosła z 7 do 69, a pod zdjęciami z 5 do 72.</p></li>
+    <li class="rv"><h3>Myślę projektami, nie postami</h3><p>Uwielbiam wyzwania, nowe projekty i nieszablonowe akcje. Z Pantalones zabrałyśmy walizkę pełną polskich, jakościowych marek do Lizbony. Z okazji Światowego Dnia Zespołu Downa zrobiłyśmy <a href="https://www.instagram.com/p/DWJisQLDLa-/" target="_blank" rel="noopener" style="color:var(--bordo)">kampanię świadomościową z Kasią i Marysią ↗</a>. Dla Uzdrovisco odpaliłam ślepe testy z testerkami.</p></li>
+    <li class="rv d1"><h3>Jestem wielozadaniowa</h3><p>Pracowałam jako account manager w agencji i jako asystentka produkcji w domu produkcyjnym. Myślę strategicznie, piszę posty i copy, nagrywam, montuję, moderuję i produkuję sesje. Do każdej z tych rzeczy podchodzę kreatywnie i z dbałością o estetykę.</p></li>
+    <li class="rv d2"><h3>Mam zespół agentów AI</h3><p>Agenci AI usprawniają moją codzienną pracę: wspierają mnie w montażu, kampaniach i analizie wyników. AI absolutnie mnie fascynuje: ciągle odkrywam nowe możliwości, optymalizuję czas pracy i zostawiam więcej przestrzeni na kreację.</p></li>
+  </ol>
+  <div class="bigb">
+    <p class="caps rv" style="text-align:center;color:var(--bordo)">doświadczenie z dużymi markami</p>
+    <h3 class="rv d1">Pracowałam z markami, które zna każdy: w agencji, w domu produkcyjnym, przy produkcji sesji i na freelansie.</h3>
+    <div class="lgroup"><p class="lg-h rv"><b>Agencja Livebrand Digital Communications</b><span>content designer, potem account manager · 2015–2021</span></p>
+    <ul class="logos" aria-label="Agencja Livebrand Digital Communications">
+      <li class="rv"><img src="logos/chupachups.svg" alt="Chupa Chups" loading="lazy"></li>
+      <li class="rv"><img src="logos/mentos.svg" alt="Mentos" loading="lazy"></li>
+      <li class="rv"><img src="logos/fruittella.svg" alt="Fruittella" loading="lazy"></li>
+      <li class="rv"><img src="logos/fishermansfriend.svg" alt="Fisherman's Friend" loading="lazy"></li>
+      <li class="rv"><img src="logos/orlen.svg" alt="Orlen Warsaw Marathon" loading="lazy"><small class="lsub">Warsaw Marathon</small></li>
+      <li class="rv"><img src="logos/korres.png" alt="Korres" loading="lazy"></li>
+      <li class="rv"><img src="logos/elektrowniapowisle.svg" alt="Elektrownia Powiśle" loading="lazy"></li>
+      <li class="rv"><img src="logos/komputronik.svg" alt="Komputronik" loading="lazy"></li>
+    </ul></div>
+    <div class="lgroup"><p class="lg-h rv"><b>Dom produkcyjny Lucky Luciano Pictures</b><span>asystentka produkcji · 2020–2021</span></p>
+    <ul class="logos" aria-label="Dom produkcyjny Lucky Luciano Pictures">
+      <li class="rv"><img src="logos/play.svg" alt="Play" loading="lazy"></li>
+      <li class="rv"><img src="logos/pekao.svg" alt="Pekao" loading="lazy"></li>
+      <li class="rv"><img src="logos/olx.svg" alt="OLX" loading="lazy"></li>
+      <li class="rv"><img src="logos/carrefour.svg" alt="Carrefour" loading="lazy"></li>
+      <li class="rv"><img src="logos/dicoflor.png" alt="Dicoflor" loading="lazy"></li>
+    </ul></div>
+    <div class="lgroup"><p class="lg-h rv"><b>Labcon: produkcja sesji zdjęciowych</b><span>producentka sesji · 2021</span></p>
+    <ul class="logos" aria-label="Labcon: produkcja sesji zdjęciowych">
+      <li class="rv"><img src="logos/doctorbrew.png" alt="Doctor Brew" loading="lazy"></li>
+      <li class="rv"><img src="logos/oeparol.png" alt="Oeparol" loading="lazy"></li>
+      <li class="rv"><img src="logos/vitapil.svg" alt="Vitapil" loading="lazy"></li>
+    </ul></div>
+    <div class="lgroup"><p class="lg-h rv"><b>Freelance</b><span>prowadzenie social mediów, moderacja, kampanie, eventy · od 2019</span></p>
+    <ul class="logos" aria-label="Freelance">
+      <li class="rv"><img src="logos/uzdrovisco.png" alt="Uzdrovisco" loading="lazy"></li>
+      <li class="rv"><img src="logos/pantalones.png" alt="Pantalones" loading="lazy"></li>
+      <li class="rv"><img src="logos/rozwojowamama.png" alt="Rozwojowa Mama" loading="lazy"></li>
+      <li class="rv"><img src="logos/lunaby.svg" alt="Lunaby" loading="lazy"></li>
+      <li class="rv"><img src="logos/pupa.svg" alt="Pupa Milano" loading="lazy"></li>
+      <li class="rv"><img src="logos/strivectin.png" alt="StriVectin" loading="lazy"></li>
+      <li class="rv"><img src="logos/proxn.svg" alt="PRO XN" loading="lazy"></li>
+      <li class="rv"><img src="logos/eveline.png" alt="Eveline Cosmetics" loading="lazy"></li>
+      <li class="rv"><img src="logos/christianlaurent.png" alt="Christian Laurent" loading="lazy"></li>
+      <li class="rv"><img src="logos/lowicz.png" alt="Łowicz" loading="lazy"></li>
+      <li class="rv"><img src="logos/bareminerals.png" alt="bareMinerals" loading="lazy"></li>
+      <li class="rv"><img src="logos/revlon.svg" alt="Revlon" loading="lazy"></li>
+      <li class="rv"><img src="logos/lauramercier.png" alt="Laura Mercier" loading="lazy"></li>
+    </ul></div>
+  </div>
+</div></section>
+
+<section class="ch" id="uzdrovisco">
+  <aside class="side"><div class="stick">
+    <p class="meta">(01) Instagram · Facebook · TikTok · od 01.2026</p>
+    <h2 class="vert">uzdrovisco</h2>
+    <p class="lead">Przejęłam bardzo niezaopiekowany profil, bez pomysłu na komunikację. Dziś każdy miesiąc to nowe wyzwanie, nowa kampania i nowe pole do kreatywności oraz budowania głębszej relacji z odbiorcami.</p>
+    <span class="tag">wyniki organiczne</span>
+  </div></aside>
+  <div class="main paper">
+    <div class="top"><p class="caps">nagrania · strategia · montaż · community</p></div>
+    <div class="ugal">
+      <figure class="tile rv"><a href="https://www.instagram.com/reel/DcyagfRoKqj/" target="_blank" rel="noopener"><div class="pic"><img src="media/brodzik_usmiech.jpg" alt="Joanna Brodzik w rolce Uzdrovisco" loading="lazy"></div></a><figcaption><b>Joanna Brodzik</b>♥ 504 · 103 komentarze · 29,5 tys. wyświetleń · nagranie: Ania Mroziak<span class="cms"><span class="cm">„Bardzo fajna sesja ❤️ odpowiednia osoba na odpowiednim miejscu 🙌”</span><span class="cm">„Pięknie świetlista cera! 😍❤️”</span></span></figcaption></figure>
+      <div class="camp2 rv d1">
+        <div class="pair">
+          <a href="https://www.instagram.com/reel/Dck6FQCofeu/" target="_blank" rel="noopener"><div class="pic"><img src="media/uzd_testerka.jpg" alt="Product manager Uzdrovisco ogłasza nabór testerek" loading="lazy"></div></a>
+          <a href="https://www.instagram.com/reel/DdHJe0EIFRk/" target="_blank" rel="noopener"><div class="pic"><img src="media/uzd_agnieszka.jpg" alt="Agnieszka z Uzdrovisco odsłania tajemniczy produkt" loading="lazy"></div></a>
+        </div>
+        <p class="caps" style="color:var(--bordo);margin-top:22px">kampania · sierpień–wrzesień 2026</p>
+        <h4>10 testerek i ślepy test</h4>
+        <p>Przed premierą nowej linii szukałyśmy 10 testerek. Każda dostała tajemniczą paczkę z kremem bez etykiety i nagrywała pierwszą reakcję: konsystencję, zapach, wrażenia, nie wiedząc, co testuje. Dopiero potem odkrywała produkt i nagrywała drugi film. Rozwiązanie zagadki przyniosła rolka z Agnieszką: w słoiczku ukrywała się nowa linia BIO ELIXIR.</p>
+        <div class="lk"><a href="https://www.instagram.com/reel/Dck6FQCofeu/" target="_blank" rel="noopener">nabór · ♥ 309 · 141 komentarzy ↗</a><a href="https://www.instagram.com/reel/DdHJe0EIFRk/" target="_blank" rel="noopener">odsłona · 10,3% zaangażowania ↗</a></div><span class="cms" style="margin-top:14px"><span class="cm">„Super recenzje 😍 i mega pomysł z takimi testami 👏👏👏”</span><span class="cm">„Najbardziej lubię takie testy: bez etykiety, bez sugerowania się nazwą, tylko szczere pierwsze wrażenie”</span></span>
+      </div>
+    </div>
+    <div class="testers rv">
+      <p class="caps" style="color:var(--bordo)">testerki o BIO ELIXIR · nagrania od obserwatorek</p>
+      <div class="tgrid">
+        <a href="https://www.instagram.com/p/DdybPLPSmBQ/" target="_blank" rel="noopener" aria-label="Testerka z psem testuje krem bez etykiety"><div class="pic sq"><video src="media/test_pies.mp4" poster="media/test_pies.jpg" autoplay muted loop playsinline></video></div></a>
+        <a href="https://www.instagram.com/p/DdybPLPSmBQ/" target="_blank" rel="noopener" aria-label="Testerka nakłada krem"><div class="pic sq"><video src="media/test_blond.mp4" poster="media/test_blond.jpg" autoplay muted loop playsinline></video></div></a>
+        <a href="https://www.instagram.com/p/DeJmQG9oJln/" target="_blank" rel="noopener" aria-label="Justyna po kilku tygodniach stosowania"><div class="pic sq"><video src="media/test_justyna.mp4" poster="media/test_justyna.jpg" autoplay muted loop playsinline></video></div></a>
+        <a href="https://www.instagram.com/p/DeJmQG9oJln/" target="_blank" rel="noopener" aria-label="Kasia po kilku tygodniach stosowania"><div class="pic sq"><video src="media/test_kasia.mp4" poster="media/test_kasia.jpg" autoplay muted loop playsinline></video></div></a>
+      </div>
+      <div class="lk"><a href="https://www.instagram.com/p/DdybPLPSmBQ/" target="_blank" rel="noopener">pierwsze reakcje testerek · ♥ 87 · 79 komentarzy ↗</a><a href="https://www.instagram.com/p/DeJmQG9oJln/" target="_blank" rel="noopener">Kasia i Justyna po kilku tygodniach · ♥ 71 · 47 komentarzy ↗</a></div>
+    </div>
+    <figure class="tile wide rv"><div class="pic"><video src="media/uzd_blackfriday.mp4" poster="media/uzd_blackfriday.jpg" controls muted playsinline preload="metadata" aria-label="Black Friday Uzdrovisco, wersja pozioma"></video></div><figcaption><b>Black Friday</b>montaż w 100% przez agenta AI · <a href="https://www.instagram.com/p/Df4Stg8I42K/" target="_blank" rel="noopener" style="color:var(--bordo)">rolka na Instagramie ↗</a></figcaption></figure>
+
+    <div class="ovals">
+      <div class="ostat rv"><svg class="ink" viewBox="0 0 262 168" preserveAspectRatio="none" aria-hidden="true"><use href="#ovl"/></svg><b class="num"><span class="cnt" data-to="5.14" data-dec="2">5,14</span>%<s>z 1,97</s></b><span>zaangażowanie rolek</span></div>
+      <div class="ostat rv d1"><svg class="ink" viewBox="0 0 262 168" preserveAspectRatio="none" aria-hidden="true"><use href="#ovl"/></svg><b class="num"><span class="cnt" data-to="69">69</span><s>z 7</s></b><span>komentarzy / rolka</span></div>
+      <div class="ostat rv d2"><svg class="ink" viewBox="0 0 262 168" preserveAspectRatio="none" aria-hidden="true"><use href="#ovl"/></svg><b class="num"><span class="cnt" data-to="72">72</span><s>z 5</s></b><span>komentarzy / zdjęcie</span></div>
+      <div class="ostat rv d3"><svg class="ink" viewBox="0 0 262 168" preserveAspectRatio="none" aria-hidden="true"><use href="#ovl"/></svg><b class="num"><span class="cnt" data-to="109">109</span><s>z 48</s></b><span>rolek w roku</span></div>
+    </div>
+    <p class="note">Mediany i zaangażowanie z publicznych danych: (polubienia + komentarze) / wyświetlenia. Rolki z konta marki, bez płatnej promocji i bez kolaboracji twórczyń. Porównanie: 2025 vs 2026.</p>
+
+    <div class="blk" style="max-width:760px">
+      <div class="rv">
+        <h3>zaangażowanie <em>miesiąc po miesiącu</em></h3>
+        <div class="legend"><span><i style="background:var(--pink)"></i>2025</span><span><i style="background:var(--bordo)"></i>2026, ze mną</span></div>
+        <div id="chart" role="img" aria-label="Zaangażowanie rolek Uzdrovisco miesiąc po miesiącu, 2025 i 2026"></div>
+        <p class="note" style="margin-top:8px">Styczeń–październik, 2025 vs 2026.</p>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ch" id="pantalones">
+  <aside class="side plum"><div class="stick">
+    <p class="meta">(02) Instagram · 01–10.2026</p>
+    <h2 class="vert">pantalones</h2>
+    <p class="lead">Bielizna z organicznej bawełny dla młodszej, świadomej odbiorczyni. Edukacja o materiałach, humor, spójna estetyka i projekty z polskimi markami.</p>
+    <span class="tag">wyniki organiczne</span>
+  </div></aside>
+  <div class="main paper">
+    <div class="top"><p class="caps">strategia · content · kampanie</p></div>
+    <div class="two" style="margin-top:48px;align-items:center">
+      <figure class="frame rv" style="--r:-1deg">
+        <div class="box feedframe">
+          <div class="ba" id="ba">
+            <div class="side2"><img src="img/pantalones_2026-10_rzad1.jpg" alt="Siatka Pantalones, jesień 2026"><img src="img/pantalones_2026-10_rzad2.jpg" alt=""><img src="img/pantalones_2026-10_rzad3.jpg" alt=""><img src="img/pantalones_2026-10_rzad4.jpg" alt=""></div>
+            <div class="side2 before"><img src="img/pantalones_2025-09_rzad1.jpg" alt="Siatka Pantalones, wrzesień 2025"><img src="img/pantalones_2025-09_rzad2.jpg" alt=""><img src="img/pantalones_2025-09_rzad3.jpg" alt=""><img src="img/pantalones_2025-09_rzad4.jpg" alt=""></div>
+            <div class="handle"></div>
+            <span class="t" style="left:10px">przed · 09.2025</span><span class="t" style="right:10px">po · 09–10.2026</span>
+            <input type="range" min="0" max="100" value="50" aria-label="Porównaj feed Pantalones: przed i po">
+          </div>
+          <svg class="fr ink" viewBox="0 0 400 500" preserveAspectRatio="none"><use href="#rect"/></svg>
+        </div>
+        <figcaption>Feed przed i po<span>przesuń suwak</span></figcaption>
+      </figure>
+      <div>
+        <h3 class="rv" style="font-size:clamp(40px,4.6vw,68px)">feed, który <em style="font-style:normal;color:var(--bordo)">ma styl</em></h3>
+        <p class="story rv d1">Jesień 2026: edukacja o materiałach („Twoja skóra wie, z czego są Twoje majtki”), seria z lekarką, nabór testerek, opinie klientek i spójna typografia marki.</p>
+        <div class="ovals" style="grid-template-columns:repeat(3,minmax(0,1fr));margin-top:40px">
+          <div class="ostat rv"><svg class="ink" viewBox="0 0 262 168" preserveAspectRatio="none" aria-hidden="true"><use href="#ovl"/></svg><b class="num"><span class="cnt" data-to="2.15" data-dec="2">2,15</span>%<s>z 1,25</s></b><span>zaangażowanie</span></div>
+          <div class="ostat rv d1"><svg class="ink" viewBox="0 0 262 168" preserveAspectRatio="none" aria-hidden="true"><use href="#ovl"/></svg><b class="num"><span class="cnt" data-to="75">75</span><s>z 32</s></b><span>polubień, mediana</span></div>
+          <div class="ostat rv d2"><svg class="ink" viewBox="0 0 262 168" preserveAspectRatio="none" aria-hidden="true"><use href="#ovl"/></svg><b class="num"><span class="cnt" data-to="17">17</span><s>z 2</s></b><span>komentarzy, mediana</span></div>
+        </div>
+        <p class="note">Porównanie: 2025 vs moje miesiące w 2026.</p>
+      </div>
+    </div>
+
+    <div class="blk">
+      <p class="caps rv" style="color:var(--bordo)">projekt · Lizbona · 31.05–25.06.2026</p>
+      <h3 class="rv" style="margin-top:12px">walizka pełna <em>polskich marek</em></h3>
+      <div class="two" style="margin-top:40px;align-items:start">
+        <figure class="tile rv" style="max-width:380px"><div class="pic" style="aspect-ratio:9/16"><video src="media/pan_walizka_film.mp4" poster="media/pan_winda.jpg" autoplay muted loop playsinline controls aria-label="Zapowiedź projektu Walizka pełna polskich marek"></video></div><figcaption><b>Zapowiedź projektu: lecimy!</b>11,3 tys. wyświetleń · 172 polubienia · 66 komentarzy · <a href="https://www.instagram.com/p/DZAlmcyAR3U/" target="_blank" rel="noopener" style="color:var(--bordo)">na Instagramie ↗</a></figcaption></figure>
+        <div>
+          <p class="story rv" style="margin-top:0">Polecieliśmy do Lizbony z walizką pełną polskich, jakościowych marek. Co trzy dni otwieraliśmy ją w nowym konkursie z inną marką partnerską: 10 rolek, 11 marek i jedna walizka, która przez cały czerwiec trzymała obserwatorki w napięciu.</p>
+          <p class="caps rv" style="color:var(--bordo);margin-top:36px">wyniki całego projektu · 10 rolek</p>
+          <div class="ovals" style="grid-template-columns:repeat(2,minmax(0,1fr));margin-top:14px">
+            <div class="ostat rv "><svg class="ink" viewBox="0 0 262 168" preserveAspectRatio="none" aria-hidden="true"><use href="#ovl"/></svg><b class="num">98,5<s>tys.</s></b><span>wyświetleń</span></div>
+            <div class="ostat rv d1"><svg class="ink" viewBox="0 0 262 168" preserveAspectRatio="none" aria-hidden="true"><use href="#ovl"/></svg><b class="num">2&nbsp;413</b><span>polubień</span></div>
+            <div class="ostat rv d2"><svg class="ink" viewBox="0 0 262 168" preserveAspectRatio="none" aria-hidden="true"><use href="#ovl"/></svg><b class="num">1&nbsp;278</b><span>komentarzy</span></div>
+            <div class="ostat rv d3"><svg class="ink" viewBox="0 0 262 168" preserveAspectRatio="none" aria-hidden="true"><use href="#ovl"/></svg><b class="num">3,75%</b><span>zaangażowania, 3× średnia z 2025</span></div>
+          </div>
+          <p class="note">Suma z 10 rolek projektu (zapowiedź i 9 otwarć walizki), publiczne dane z Instagrama, wyniki organiczne.</p>
+        </div>
+      </div>
+      <p class="caps rv" style="color:var(--bordo);margin-top:72px;text-align:center">co pisały obserwatorki</p>
+      <ul class="quotes"><li class="rv d0" style="--r:-1.5deg"><p>„Suuuper Akcja! Czekam na konkursy 😉”</p><span>komentarz pod zapowiedzią projektu</span></li><li class="rv d1" style="--r:1deg"><p>„Aaaaa ale sztos 🔥🔥😍”</p><span>komentarz pod zapowiedzią projektu</span></li><li class="rv d2" style="--r:-.5deg"><p>„OoooooMg jaka energia! 🥰”</p><span>komentarz pod zapowiedzią projektu</span></li><li class="rv d0" style="--r:1.5deg"><p>„Uuu! Czekam z niecierpliwością 😍🔥”</p><span>komentarz pod zapowiedzią projektu</span></li></ul>
+      <p class="caps rv" style="color:var(--bordo);margin-top:72px;text-align:center">marki, które dołączyły do walizki</p>
+      <ul class="logos" style="max-width:1000px;margin:28px auto 0;grid-template-columns:repeat(4,minmax(0,1fr))" aria-label="Marki partnerskie projektu">
+        <li class="rv" style="--r:-2deg"><img src="logos/owca.png" alt="Owca Rzeczy Miękkie" loading="lazy"></li>
+        <li class="rv" style="--r:2deg"><img src="logos/sotho.png" alt="Sotho" loading="lazy"></li>
+        <li class="rv" style="--r:-1deg"><img src="logos/agazi.svg" alt="Agazi Footwear" loading="lazy"></li>
+        <li class="rv" style="--r:3deg"><img src="logos/uzdrovisco.png" alt="Uzdrovisco" loading="lazy"></li>
+        <li class="rv" style="--r:1deg"><img src="logos/anis.png" alt="Anis Collective" loading="lazy"></li>
+        <li class="rv" style="--r:-3deg"><img src="logos/lamillou.png" alt="La Millou" loading="lazy"></li>
+        <li class="rv" style="--r:-2deg"><img src="logos/nashe.png" alt="Nashe Bags" loading="lazy"></li>
+        <li class="rv" style="--r:2deg"><img src="logos/szmatsklad.png" alt="Szmat Skład" loading="lazy"></li>
+        <li class="rv" style="--r:-1deg"><img src="logos/bosko.png" alt="Bosko Cosmetics" loading="lazy"></li>
+        <li class="rv" style="--r:3deg"><img src="logos/annabelle.png" alt="Annabelle Minerals" loading="lazy"></li>
+        <li class="rv" style="--r:1deg"><img src="logos/wings.svg" alt="Wings Let's Fly" loading="lazy"></li>
+      </ul>
+    </div>
+
+    <div class="blk two" style="align-items:center">
+      <figure class="frame arch rv" style="--r:2deg;max-width:380px"><a href="https://www.instagram.com/pantalones_official/reel/DdbdvVUA1VS/" target="_blank" rel="noopener"><div class="ph"><img src="media/pan_pantalony.jpg" alt="Wielkie pantalony niesione przez miasto" loading="lazy"></div><svg class="fr ink" viewBox="0 0 400 500" preserveAspectRatio="none"><use href="#arch"/></svg></a><figcaption>Największe pantalony na świecie<span class="cms"><span class="cm">„Ale super galoty”</span><span class="cm">„Hahaha pantalonów szał! 🤟 strzelam w sto!”</span></span></figcaption></figure>
+      <div>
+        <h3 class="rv">kreacja: <em>niesiemy majtki 2,5 × 2 m</em></h3>
+        <p class="story rv d1">Niesiemy je na Targi Rzeczy Ładnych. Humor, ruch i produkt w jednym kadrze.</p>
+        <div class="ovals" style="grid-template-columns:repeat(3,minmax(0,1fr));margin-top:32px;max-width:520px">
+          <div class="ostat rv"><svg class="ink" viewBox="0 0 262 168" preserveAspectRatio="none" aria-hidden="true"><use href="#ovl"/></svg><b class="num">13,6<s>tys.</s></b><span>wyświetleń</span></div>
+          <div class="ostat rv d1"><svg class="ink" viewBox="0 0 262 168" preserveAspectRatio="none" aria-hidden="true"><use href="#ovl"/></svg><b class="num">125</b><span>polubień</span></div>
+          <div class="ostat rv d2"><svg class="ink" viewBox="0 0 262 168" preserveAspectRatio="none" aria-hidden="true"><use href="#ovl"/></svg><b class="num">42</b><span>komentarze</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <h3 class="rv">sesje <em>wyjazdowe</em></h3>
+      <p class="story rv" style="max-width:60ch">Kolekcje kąpielowe fotografujemy tam, gdzie powinny być noszone: na plaży o zachodzie słońca i przy basenie w pełnym słońcu. Zdjęcia, rolki i kolaże z jednego wyjazdu żyją potem na profilu przez całe lato.</p>
+      <div class="evgrid" style="grid-template-columns:repeat(4,minmax(0,1fr))">
+        <figure class="tile rv "><a href="https://www.instagram.com/p/DbvIWRngGFY/" target="_blank" rel="noopener"><div class="pic"><img src="media/pan_wyj_wisnie1.jpg" alt="Kolaż z sesji kostiumu w wiśnie na plaży" loading="lazy"></div></a><figcaption><b>Swimwear: wiśnie</b>kolaż z sesji na plaży · ♥ 19 · 5 komentarzy<span class="cms"><span class="cm">„Ale super 👍😍”</span><span class="cm">„Pięknie 👍👍❤️”</span></span></figcaption></figure>
+        <figure class="tile rv d1"><a href="https://www.instagram.com/p/DbvIWRngGFY/" target="_blank" rel="noopener"><div class="pic"><img src="media/pan_wyj_wisnie3.jpg" alt="Modelka w kostiumie w wiśnie o zachodzie słońca" loading="lazy"></div></a><figcaption><b>Zachód słońca</b>ten sam wyjazd, ta sama sesja</figcaption></figure>
+        <figure class="tile rv d2"><a href="https://www.instagram.com/p/DbAqx3ogGma/" target="_blank" rel="noopener"><div class="pic"><img src="media/pan_wyj_plaza.jpg" alt="Modelka w kostiumie i koronkowym bolerku na plaży" loading="lazy"></div></a><figcaption><b>Lato na plaży</b>rolka z sesji · ♥ 29 · 10 komentarzy</figcaption></figure>
+        <figure class="tile rv d3"><a href="https://www.instagram.com/p/DadDEryADPg/" target="_blank" rel="noopener"><div class="pic"><img src="media/pan_wyj_czerwien.jpg" alt="Modelka w czerwonym komplecie przy basenie" loading="lazy"></div></a><figcaption><b>Chilli przy basenie</b>karuzela z sesji · ♥ 44 · 10 komentarzy</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="blk">
+      <h3 class="rv">eventy, retro kamerka <em>i kreacja</em></h3>
+      <div class="evgrid">
+        <figure class="tile rv"><a href="https://www.instagram.com/p/DV9A9lkjG-x/" target="_blank" rel="noopener"><div class="pic"><img src="media/pan_event1.jpg" alt="Klientki przeglądają bieliznę Pantalones na evencie" loading="lazy"></div></a><figcaption><b>Event w Balans, Mysia 3</b>relacja z dnia w sklepie stacjonarnym · ♥ 111 · 23 komentarze<span class="cms"><span class="cm">„‚Jak będą mnie chować, to tylko w Pantalones’ KOCHAM ❤️❤️❤️”</span><span class="cm">„Ta minimalistyczna bielizna wygląda naprawdę przepięknie! 😍”</span></span></figcaption></figure>
+        <figure class="tile rv d2"><a href="https://www.instagram.com/p/DUi-L_fDKRj/" target="_blank" rel="noopener"><div class="pic"><img src="media/pan_retro.jpg" alt="Kadr z retro kamerki: modelka w czerwonym komplecie FLIRTY" loading="lazy"></div></a><figcaption><b>FLIRTY, nagrane retro kamerką</b>klimat lat 90., ziarno i ciepłe światło · ♥ 30 · 15 komentarzy<span class="cms"><span class="cm">„Top jest mega 😍”</span><span class="cm">„I need this 😍”</span></span></figcaption></figure>
+        <figure class="tile rv"><a href="https://www.instagram.com/p/DVY3_sGjPs3/" target="_blank" rel="noopener"><div class="pic"><img src="media/pan_retro2.jpg" alt="Kadr z retro kamerki: modelka w beżowym komplecie z bawełny organicznej" loading="lazy"></div></a><figcaption><b>Bawełna organiczna, retro kamerka</b>ciepłe światło hotelowego pokoju · ♥ 38 · 10 komentarzy<span class="cms"><span class="cm">„boska rolka 😍”</span><span class="cm">„Mega 🔥🔥🔥”</span></span></figcaption></figure>
+        <figure class="tile rv d1"><a href="https://www.instagram.com/p/DVENGRcjN03/" target="_blank" rel="noopener"><div class="pic"><img src="media/pan_navy.jpg" alt="Animowany kolaż zdjęć z dropu Navy Essentials" loading="lazy"></div></a><figcaption><b>Kreacja: drop Navy Essentials</b>animowany kolaż jak z moodboardu · ♥ 28 · 15 komentarzy<span class="cms"><span class="cm">„Podoba mi się ten granat. Szlachetny 💣💙”</span><span class="cm">„Zapowiada się świetnie 🔥”</span></span></figcaption></figure>
+      </div>
+      <p class="story rv">Nagrywam nie tylko telefonem: relacje z eventów pokazują ludzi i atmosferę marki, retro kamerka daje kadrom ziarno i klimat lat 90., który pasuje do Pantalones, a przy premierach kolekcji bawię się formą, jak w animowanym kolażu dropu Navy Essentials.</p>
+      <div class="lk rv"><a href="https://www.instagram.com/pantalones_official/" target="_blank" rel="noopener">@pantalones_official ↗</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="ch" id="freelance">
+  <aside class="side rose"><div class="stick">
+    <p class="meta">(03) Freelance · 2024–2026</p>
+    <h2 class="vert">freelance</h2>
+    <p class="lead">Rolki dla marek beauty, modowych i parentingowych: relacje z eventów, premiery produktów i kampanie sezonowe.</p>  </div></aside>
+  <div class="main paper">
+    <div class="top"><p class="caps">Rozwojowa Mama · Pupa Milano · Lunaby · Zalando</p></div>
+    <div class="flhead rv"><h3>eventy, premiery <em>i kampanie</em></h3><p class="note">Kliknij film, żeby włączyć dźwięk. „Zobacz ↗” otwiera oryginalną publikację.</p></div>
+    <div class="vgrid">
+      <figure class="vt rv">
+        <div class="pic v916"><video src="media/fl_rozwojowa_eva.mp4" poster="media/fl_rozwojowa_eva.jpg" muted loop playsinline preload="none" data-snd aria-label="Rozwojowa Mama: Eva Blocks"></video><button class="snd" type="button" aria-pressed="false"><i aria-hidden="true">♪</i><span>włącz dźwięk</span></button><a class="go" href="https://www.instagram.com/p/Dfl3D-NMOAI/" target="_blank" rel="noopener">zobacz ↗</a></div>
+        <figcaption><span class="br">Rozwojowa Mama · od 11.2026</span><a href="https://www.instagram.com/p/Dfl3D-NMOAI/" target="_blank" rel="noopener"><b>Eva Blocks: montaż 100% AI</b></a><p>Od niedawna pracuję dla Rozwojowej Mamy. Tę rolkę w całości zmontował mój agent AI z materiałów nagranych przez klientkę: cięcia, napisy i wezwanie do zakupu.</p><p class="vnum">48,7 tys. wyświetleń · ♥ 192 · 646 komentarzy · 270 udostępnień · wyniki organiczne</p><span class="lnk"><a href="https://www.instagram.com/p/Dfl3D-NMOAI/" target="_blank" rel="noopener">zobacz na Instagramie ↗</a></span></figcaption>
+      </figure>
+      <figure class="vt rv d0">
+        <div class="pic v916"><video src="media/fl_pupa_shock.mp4" poster="media/fl_pupa_shock.jpg" muted loop playsinline preload="none" data-snd aria-label="Pupa Milano · event: Premiera Shock Plump"></video><button class="snd" type="button" aria-pressed="false"><i aria-hidden="true">♪</i><span>włącz dźwięk</span></button><a class="go" href="https://www.instagram.com/p/DJtv6iIsrwd/" target="_blank" rel="noopener">zobacz ↗</a></div>
+        <figcaption><span class="br">Pupa Milano · event</span><a href="https://www.instagram.com/p/DJtv6iIsrwd/" target="_blank" rel="noopener"><b>Premiera Shock Plump</b></a><p>Relacja z eventu sklepu Puder i Krem: premiera błyszczyka powiększającego usta z efektem „ciepło–zimno”, w czerwono-liliowej scenografii marki.</p><span class="cms"><span class="cm">„Śliczne kolory 😍”</span><span class="cm">„wyszło wspaniale ❤️😍”</span></span><span class="lnk"><a href="https://www.instagram.com/p/DJtv6iIsrwd/" target="_blank" rel="noopener">zobacz na Instagramie ↗</a></span></figcaption>
+      </figure>
+      <figure class="vt rv d1">
+        <div class="pic v916"><video src="media/fl_pupa_besties.mp4" poster="media/fl_pupa_besties.jpg" muted loop playsinline preload="none" data-snd aria-label="Pupa Milano · event: Besties Talk × Relab"></video><button class="snd" type="button" aria-pressed="false"><i aria-hidden="true">♪</i><span>włącz dźwięk</span></button><a class="go" href="https://www.instagram.com/p/C92x3U3IcHB/" target="_blank" rel="noopener">zobacz ↗</a></div>
+        <figcaption><span class="br">Pupa Milano · event</span><a href="https://www.instagram.com/p/C92x3U3IcHB/" target="_blank" rel="noopener"><b>Besties Talk × Relab</b></a><p>Pupa jako partner eventu podcastu Besties Talk w Relab Store: makijaże dla gości, różowa scenografia i produkty marki w kadrze.</p><span class="lnk"><a href="https://www.instagram.com/p/C92x3U3IcHB/" target="_blank" rel="noopener">zobacz na Instagramie ↗</a></span></figcaption>
+      </figure>
+      <figure class="vt rv d2">
+        <div class="pic v916"><video src="media/fl_zalando_getthelook.mp4" poster="media/fl_zalando_getthelook.jpg" muted loop playsinline preload="none" data-snd aria-label="Zalando · wideo: Get the Look"></video><button class="snd" type="button" aria-pressed="false"><i aria-hidden="true">♪</i><span>włącz dźwięk</span></button><a class="go" href="https://www.zalando.pl/creator/07011cd6-2734-4b9c-a0af-22e18ad934c4/video/605c0940-1e92-4e77-8fee-78d585c326ab/" target="_blank" rel="noopener">zobacz ↗</a></div>
+        <figcaption><span class="br">Zalando · wideo</span><a href="https://www.zalando.pl/creator/07011cd6-2734-4b9c-a0af-22e18ad934c4/video/605c0940-1e92-4e77-8fee-78d585c326ab/" target="_blank" rel="noopener"><b>Get the Look</b></a><p>Jesienna stylizacja twórczyni ankasmietanka w formacie Get the Look: każdy element z filmu można kupić na Zalando.</p><span class="lnk"><a href="https://www.zalando.pl/creator/07011cd6-2734-4b9c-a0af-22e18ad934c4/video/605c0940-1e92-4e77-8fee-78d585c326ab/" target="_blank" rel="noopener">zobacz na Zalando ↗</a></span></figcaption>
+      </figure>
+      <figure class="vt rv d0">
+        <div class="pic v916"><video src="media/fl_lunaby_holly.mp4" poster="media/fl_lunaby_holly.jpg" muted loop playsinline preload="none" data-snd aria-label="Lunaby · kampania świąteczna: Holly Jolly"></video><button class="snd" type="button" aria-pressed="false"><i aria-hidden="true">♪</i><span>włącz dźwięk</span></button><a class="go" href="https://www.instagram.com/p/DSDQEYwjNBe/" target="_blank" rel="noopener">zobacz ↗</a></div>
+        <figcaption><span class="br">Lunaby · kampania świąteczna</span><a href="https://www.instagram.com/p/DSDQEYwjNBe/" target="_blank" rel="noopener"><b>Holly Jolly</b></a><p>Świąteczna rolka piżamy Holly Jolly: pianki, kakao i radosny klimat, który podpowiada pomysł na prezent.</p><span class="cms"><span class="cm">„Ale klimat ❤️”</span><span class="cm">„Czuć święta 🎄”</span></span><span class="lnk"><a href="https://www.instagram.com/p/DSDQEYwjNBe/" target="_blank" rel="noopener">zobacz na Instagramie ↗</a></span></figcaption>
+      </figure>
+      <figure class="vt rv d1">
+        <div class="pic v916"><video src="media/fl_lunaby_nela.mp4" poster="media/fl_lunaby_nela.jpg" muted loop playsinline preload="none" data-snd aria-label="Lunaby · jesień: Nela Peach Fuzz"></video><button class="snd" type="button" aria-pressed="false"><i aria-hidden="true">♪</i><span>włącz dźwięk</span></button><a class="go" href="https://www.instagram.com/p/DBiw9hmoaSz/" target="_blank" rel="noopener">zobacz ↗</a></div>
+        <figcaption><span class="br">Lunaby · jesień</span><a href="https://www.instagram.com/p/DBiw9hmoaSz/" target="_blank" rel="noopener"><b>Nela Peach Fuzz</b></a><p>Spokojny, jesienny kadr: książka, herbata i piżama Nela w kolorze Peach Fuzz, zaproszenie na wyprzedaż.</p><span class="cms"><span class="cm">„Przepiękne piżamki po prostu cuda 😍”</span></span><span class="lnk"><a href="https://www.instagram.com/p/DBiw9hmoaSz/" target="_blank" rel="noopener">zobacz na Instagramie ↗</a></span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="ch" id="produkcja">
+  <aside class="side choc"><div class="stick">
+    <p class="meta">(04) Sesje i plany zdjęciowe · 2021</p>
+    <h2 class="vert">produkcja</h2>
+    <p class="lead">Produkowałam sesje zdjęciowe kampanii na zlecenie agencji Labcon (Group One).</p>
+  </div></aside>
+  <div class="main paper">
+    <div class="two" style="align-items:center">
+      <figure class="frame rv vidframe" style="--r:-1deg"><div class="box" style="aspect-ratio:1/1"><div class="ph"><video controls muted playsinline loop preload="metadata" poster="img/doctorbrew_poster.jpg" src="video/doctorbrew_2021-09-27_dach.mp4" aria-label="Wideo z kampanii Doctor Brew"></video></div><svg class="fr ink" viewBox="0 0 400 500" preserveAspectRatio="none"><use href="#rect"/></svg></div><figcaption>Doctor Brew · Z buntu najlepsze</figcaption></figure>
+      <div>
+        <h3 class="rv" style="font-size:clamp(44px,5vw,76px)">z buntu <em style="font-style:normal;color:var(--bordo)">najlepsze</em></h3>
+        <div class="cred rv d1"><b>produkcja</b><span>Ania Mroziak</span><b>zdjęcia</b><span>Zuza Krajewska</span><b>klient</b><span>Doctor Brew</span></div>
+        <p class="story rv d2">Relaunch Doctor Brew: cztery piwa, kampania digital, mural na Nowym Świecie i odważne zdjęcia par. Post z parą gejów zebrał falę hejtu, a marka zamieniła go w pomoc: po 10 zł za każdy hejterski komentarz dla Kampanii Przeciw Homofobii, łącznie 30 tys. zł.</p>
+        <div class="lk rv d3"><a href="https://biznes.newseria.pl/biuro-prasowe/kultura/doctor-brew-wraca-z-nowa,b285283999" target="_blank" rel="noopener">Newseria ↗</a><a href="https://www.wirtualnemedia.pl/artykul/doctor-brew-z-buntu-najlepsze" target="_blank" rel="noopener">Wirtualne Media ↗</a><a href="https://www.wirtualnemedia.pl/artykul/doctor-brew-homofobiczny-hejt-kampania-przeciw-homofobii" target="_blank" rel="noopener">hejt w pomoc ↗</a><a href="https://www.instagram.com/p/CRHoFRBlTgC/" target="_blank" rel="noopener">film z kampanii ↗</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ai paper" id="ai"><div class="in">
+  <p class="caps rv" style="text-align:center;color:var(--bordo)">(05) od 10.2026</p>
+  <h2 class="rv" style="margin-top:12px">mój zespół agentów</h2>
+  <p class="lead rv d1">Zbudowałam zespół agentów AI, który wspiera mnie w montażu rolek, kampaniach i analizie wyników. Pomysł, nagranie i akceptacja zostają po mojej stronie.</p>
+  <div class="ovals">
+    <div class="ostat rv"><svg class="ink" viewBox="0 0 262 168" preserveAspectRatio="none" aria-hidden="true"><use href="#ovl"/></svg><b class="num"><span class="cnt" data-to="45">45</span></b><span>montaży w 1. miesiącu</span></div>
+    <div class="ostat rv d1"><svg class="ink" viewBox="0 0 262 168" preserveAspectRatio="none" aria-hidden="true"><use href="#ovl"/></svg><b class="num">100%</b><span><a href="https://www.instagram.com/p/Df4Stg8I42K/" target="_blank" rel="noopener">montażu tej rolki ↗</a></span></div>
+    <div class="ostat rv d2"><svg class="ink" viewBox="0 0 262 168" preserveAspectRatio="none" aria-hidden="true"><use href="#ovl"/></svg><b class="num">0</b><span>publikacji bez mojej zgody</span></div>
+  </div>
+  <div class="map rv" role="img" aria-label="Mapa powiązań: Ania i baza wiedzy zasilają koordynatora Claude Code, który zleca pracę agentom montażu, grafik, analizy profili, łącznikowi Meta, Gmailowi i Dyskowi oraz kopii na GitHubie; wyniki wracają do Ani do akceptacji.">
+    <svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" font-family="Beaulieu, system-ui, sans-serif">
+      <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9" fill="none" stroke="#2A0E04" stroke-width="1.4"/></marker></defs>
+      <g class="ink" marker-end="url(#ar)" style="stroke-width:1.3">
+        <path d="M190,160 C260,160 270,218 330,218"/><path d="M190,300 C260,300 270,232 330,232"/><path d="M500,225 C545,225 545,62 600,62"/><path d="M500,225 C545,225 545,132 600,132"/><path d="M500,225 C545,225 545,202 600,202"/><path d="M500,225 C545,225 545,272 600,272"/><path d="M500,225 C545,225 545,342 600,342"/><path d="M500,225 C545,225 545,412 600,412"/><path d="M780,62 C815,62 815,90 850,90"/><path d="M780,132 C815,132 815,170 850,170"/><path d="M780,202 C815,202 815,255 850,255"/><path d="M780,272 C815,272 815,255 850,255"/><path d="M780,342 C815,342 815,345 850,345"/>
+      </g>
+      <path d="M920,367 C920,455 900,470 850,470 L40,470 C20,470 12,458 12,430 L12,160 L26,160" fill="none" stroke="#750928" stroke-width="1.5" stroke-dasharray="5 6" marker-end="url(#ar)"/>
+      <text x="520" y="496" fill="#750928" font-size="13" text-anchor="middle" letter-spacing="2">AKCEPTACJA · NIC NIE WYCHODZI BEZ MOJEJ ZGODY</text>
+      <g font-size="15">
+        <ellipse cx="110" cy="160" rx="82" ry="34" fill="#750928"/><text x="110" y="157" text-anchor="middle" fill="#FBF3E6">Ania</text><text x="110" y="175" text-anchor="middle" fill="#E9C9CF" font-size="11">pomysł · nagranie</text>
+        <ellipse cx="110" cy="300" rx="82" ry="34" class="ink"/><text x="110" y="297" text-anchor="middle" fill="#2A0E04">baza wiedzy</text><text x="110" y="315" text-anchor="middle" fill="#8A6A60" font-size="11">klienci · metody · zasady</text>
+        <ellipse cx="410" cy="225" rx="82" ry="42" fill="#E9C9CF"/><ellipse cx="410" cy="225" rx="90" ry="50" class="ink"/><text x="410" y="222" text-anchor="middle" fill="#2A0E04" font-size="17">Claude Code</text><text x="410" y="241" text-anchor="middle" fill="#2A0E04" font-size="11">koordynator</text>
+        <rect x="600" y="40" width="180" height="44" rx="22" class="ink"/><text x="690" y="67" text-anchor="middle" fill="#2A0E04">montaż · CapCut</text><rect x="600" y="110" width="180" height="44" rx="22" class="ink"/><text x="690" y="137" text-anchor="middle" fill="#2A0E04">grafiki · karuzele</text><rect x="600" y="180" width="180" height="44" rx="22" class="ink"/><text x="690" y="207" text-anchor="middle" fill="#2A0E04">analiza profili IG</text><rect x="600" y="250" width="180" height="44" rx="22" class="ink"/><text x="690" y="277" text-anchor="middle" fill="#2A0E04">Meta · tylko odczyt</text><rect x="600" y="320" width="180" height="44" rx="22" class="ink"/><text x="690" y="347" text-anchor="middle" fill="#2A0E04">Gmail i Dysk · szkice</text><rect x="600" y="390" width="180" height="44" rx="22" class="ink" stroke-dasharray="4 5"/><text x="690" y="417" text-anchor="middle" fill="#8A6A60">kopia na GitHubie</text><rect x="850" y="68" width="140" height="44" rx="22" fill="#750928"/><text x="920" y="95" text-anchor="middle" fill="#FBF3E6">rolki</text><rect x="850" y="148" width="140" height="44" rx="22" fill="#750928"/><text x="920" y="175" text-anchor="middle" fill="#FBF3E6">grafiki</text><rect x="850" y="233" width="140" height="44" rx="22" fill="#750928"/><text x="920" y="260" text-anchor="middle" fill="#FBF3E6">raporty</text><rect x="850" y="323" width="140" height="44" rx="22" fill="#750928"/><text x="920" y="350" text-anchor="middle" fill="#FBF3E6">szkice maili</text>
+      </g>
+      <g font-size="11" fill="#8A6A60" letter-spacing="2"><text x="30" y="24">WEJŚCIE</text><text x="330" y="24">KOORDYNACJA</text><text x="600" y="24">AGENCI</text><text x="850" y="24">WYNIK</text></g>
+    </svg>
+  </div>
+</div></section>
+
+<section class="cl paper" id="marki"><div class="in">
+  <p class="caps rv" style="text-align:center;color:var(--bordo)">(06) 2015–2026</p>
+  <h2 class="rv" style="margin-top:12px">marki, z którymi pracowałam</h2>
+  <p class="brands rv d1"><span>Uzdrovisco</span> <i>✦</i> <span>Pantalones</span> <i>✦</i> <span>Pupa Milano</span> <i>✦</i> <span>StriVectin</span> <i>✦</i> <span>Lunaby</span> <i>✦</i> <span>PRO XN</span> <i>✦</i> <span>Eveline Cosmetics</span> <i>✦</i> <span>Doctor Brew</span> <i>✦</i> <span>Oeparol</span> <i>✦</i> <span>Vitapil</span> <i>✦</i> <span>Mentos</span> <i>✦</i> <span>Chupa Chups</span> <i>✦</i> <span>bareMinerals</span> <i>✦</i> <span>Revlon</span> <i>✦</i> <span>Laura Mercier</span> <i>✦</i> <span>Korres</span> <i>✦</i> <span>Orlen Warsaw Marathon</span> <i>✦</i> <span>Play</span> <i>✦</i> <span>Pekao</span> <i>✦</i> <span>OLX</span> <i>✦</i> <span>Carrefour</span>&nbsp;<i>✦</i>&nbsp;<span>Łowicz</span></p>
+</div></section>
+
+<footer class="contact" id="kontakt">
+  <div class="card2 rv">
+    <svg viewBox="0 0 640 460" preserveAspectRatio="none" fill="none" stroke="#FBF3E6" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+      <path vector-effect="non-scaling-stroke" d="M60,40 C200,30 440,48 580,38 C592,120 576,320 586,420 C440,430 200,414 56,424 C48,320 64,140 60,40Z"/>
+      <path vector-effect="non-scaling-stroke" d="M74,54 C210,46 430,60 566,52 C576,130 562,310 572,406 C430,416 210,402 70,410 C64,310 78,140 74,54Z"/>
+      <path vector-effect="non-scaling-stroke" d="M60,40 c-22,-6 -34,12 -22,22 c10,8 22,-2 14,-12"/><path vector-effect="non-scaling-stroke" d="M580,38 c20,-8 34,8 24,20 c-8,10 -22,2 -16,-8"/>
+      <path vector-effect="non-scaling-stroke" d="M586,420 c22,6 32,-12 20,-22 c-10,-8 -22,2 -14,12"/><path vector-effect="non-scaling-stroke" d="M56,424 c-20,8 -34,-8 -24,-20 c8,-10 22,-2 16,8"/>
+      <path vector-effect="non-scaling-stroke" d="M290,30 c10,-14 50,-14 60,0"/><path vector-effect="non-scaling-stroke" d="M300,432 c10,14 40,14 50,0"/>
+    </svg>
+    <p class="n">ania mroziak</p>
+    <p class="caps r">social media manager</p>
+    <p class="l">strategia · nagrania · montaż · community</p>
+    <a class="m" href="mailto:mroziak.ania@gmail.com">mroziak.ania@gmail.com</a>
+  </div>
+  <svg class="star" style="left:14%;top:18%" width="56" height="56" viewBox="0 0 70 70" fill="none" stroke="#E9C9CF" stroke-width="1.6" aria-hidden="true"><use href="#star"/></svg>
+  <svg class="star" style="left:19%;top:27%" width="24" height="24" viewBox="0 0 70 70" fill="none" stroke="#E9C9CF" stroke-width="1.6" aria-hidden="true"><use href="#star"/></svg>
+  <svg class="star" style="right:13%;bottom:26%" width="76" height="76" viewBox="0 0 70 70" fill="none" stroke="#E9C9CF" stroke-width="1.6" aria-hidden="true"><use href="#star"/></svg>
+  <div class="fine"><span>Komunikacja wizerunkowa, Uniwersytet Wrocławski</span><span>Wszystkie liczby: wyniki organiczne, z publicznych danych na Instagramie</span></div>
+</footer>
+
+<script>
+(function(){
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const m=['I','II','III','IV','V','VI','VII','VIII','IX','X'];
+  const a=[5.1,1.2,1.3,1.0,2.6,1.6,2.4,2.5,3.6,3.1];
+  const b=[4.1,3.8,4.8,5.5,5.3,6.5,6.7,4.5,4.6,6.3];
+  const W=640,H=260,L=34,B=28,T=12,max=7,cw=(W-L-8)/10,bw=cw*0.34;
+  const y=v=>T+(H-T-B)*(1-v/max);
+  let s=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" font-family="Beaulieu, system-ui, sans-serif" font-size="12">`;
+  for(let g=0;g<=max;g++){s+=`<line x1="${L}" x2="${W-8}" y1="${y(g)}" y2="${y(g)}" stroke="#2A0E04" stroke-opacity=".1"/>`;if(g%2===1||g===0)s+=`<text x="${L-6}" y="${y(g)+4}" text-anchor="end" fill="#8A6A60">${g}%</text>`;}
+  m.forEach((lab,i)=>{const x0=L+i*cw+cw/2;
+    if(a[i]!=null)s+=`<rect x="${x0-bw-1}" y="${y(a[i])}" width="${bw}" height="${y(0)-y(a[i])}" rx="4" fill="#E9C9CF"><title>${lab} 2025: ${String(a[i]).replace('.',',')}%</title></rect>`;
+    if(b[i]!=null)s+=`<rect x="${x0+1}" y="${y(b[i])}" width="${bw}" height="${y(0)-y(b[i])}" rx="4" fill="#750928"><title>${lab} 2026: ${String(b[i]).replace('.',',')}%</title></rect>`;
+    s+=`<text x="${x0}" y="${H-8}" text-anchor="middle" fill="#8A6A60">${lab}</text>`;});
+  document.getElementById('chart').innerHTML=s+'</svg>';
+  const ba=document.getElementById('ba'),r=ba.querySelector('input');
+  r.addEventListener('input',()=>ba.style.setProperty('--p',r.value+'%'));
+  const fmt=(v,d)=>d?v.toFixed(d).replace('.',','):Math.round(v).toLocaleString('pl-PL');
+  function count(el){const to=+el.dataset.to,d=+(el.dataset.dec||0);if(reduce){el.textContent=fmt(to,d);return}const t0=performance.now();(function f(t){const p=Math.min((t-t0)/1500,1);el.textContent=fmt(to*(1-Math.pow(1-p,3)),d);if(p<1)requestAnimationFrame(f)})(t0)}
+  document.querySelectorAll('.cnt').forEach(el=>el.textContent=fmt(+el.dataset.to,+(el.dataset.dec||0)));
+  // filmy: kliknięcie włącza dźwięk, odtwarzanie gdy w kadrze
+  const vids=[...document.querySelectorAll('video[data-snd]')];
+  function setSnd(v,on){vids.forEach(o=>{if(o!==v||!on){o.muted=true;const b=o.parentNode.querySelector('.snd');if(b){b.setAttribute('aria-pressed','false');b.querySelector('span').textContent='włącz dźwięk'}}});
+    if(on){v.muted=false;v.volume=1;if(v.currentTime>0.5&&v.paused)v.currentTime=0;v.play().catch(()=>{});const b=v.parentNode.querySelector('.snd');b.setAttribute('aria-pressed','true');b.querySelector('span').textContent='wycisz'}}
+  vids.forEach(v=>{const b=v.parentNode.querySelector('.snd');
+    const tog=()=>{const on=v.muted;if(on)v.currentTime=0;setSnd(v,on)};
+    b.addEventListener('click',tog);v.addEventListener('click',tog)});
+  if('IntersectionObserver' in window){const vio=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){if(!reduce||!v.muted)v.play().catch(()=>{})}else{v.pause();if(!v.muted)setSnd(v,false)}}),{threshold:.35});vids.forEach(v=>vio.observe(v))}
+  const els=document.querySelectorAll('.rv');
+  if(reduce||!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('.cnt').forEach(count);io.unobserve(e.target)}}),{threshold:.12});
+  els.forEach(e=>io.observe(e));
+})();
+</script>

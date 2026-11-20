@@ -1,0 +1,9 @@
+# Nigdy do repo: klucze, tokeny, dzienniki, archiwa, pliki systemowe
+tokeny/
+credentials*.json
+client_secret*.json
+token*.json
+.env
+*.log
+*.zip
+.DS_Store
