@@ -60,6 +60,7 @@ h1,h2,h3{font-weight:300;letter-spacing:-.03em;line-height:1}
 .ostat b{font:300 22cqw/1 var(--f);letter-spacing:-.04em;color:var(--bordo);white-space:nowrap}
 .ostat s{text-decoration:none;font-size:max(11px,.22em);color:var(--mute);margin-left:6px;vertical-align:1.7em;letter-spacing:0}
 .ostat>span{font:400 max(10px,4.4cqw)/1.3 var(--f);letter-spacing:.1em;text-transform:uppercase;margin-top:6px}
+.ostat>span{position:relative;max-width:80%;white-space:normal;text-wrap:balance;letter-spacing:.06em}
 
 /* pojawianie się */
 .rv{opacity:0;transform:translateY(36px) rotate(var(--r,0deg));transition:opacity 1s ease,transform 1.1s cubic-bezier(.2,.8,.2,1)}
@@ -206,8 +207,8 @@ a:hover .pic img{transform:scale(1.03)}
 
 /* suwak przed/po */
 .ba{position:absolute;inset:0;overflow:hidden;--p:50%;user-select:none;border-radius:10px}
-.ba .side2{position:absolute;inset:0;display:grid;grid-template-rows:repeat(4,1fr)}
-.ba .side2 img{width:100%;height:100%;object-fit:cover}
+.ba .side2{position:absolute;inset:0;display:block}
+.ba .side2 img{display:block;width:100%;height:25%;object-fit:fill;max-width:none}
 .ba .before{clip-path:inset(0 calc(100% - var(--p)) 0 0);filter:saturate(.55)}
 .ba .handle{position:absolute;top:0;bottom:0;left:var(--p);width:2px;background:var(--cream);pointer-events:none}
 .ba .handle:after{content:"‹ ›";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50px;height:50px;border-radius:50%;background:var(--bordo);color:var(--cream);display:grid;place-items:center;font:500 17px var(--f)}
@@ -327,6 +328,20 @@ ul.logos[aria-label="Marki partnerskie projektu"] li img[src*="bosko"],ul.logos[
 @media (max-width:560px){.tgrid2{grid-template-columns:minmax(0,1fr);max-width:340px}}
 .vt .vbig{margin-top:10px!important;font:400 14px/1.2 var(--f)!important;color:var(--bordo);opacity:1!important;letter-spacing:.02em}
 .vt .vbig b{display:inline!important;font:300 clamp(34px,3vw,44px)/1 var(--f)!important;letter-spacing:-.03em;margin:0 4px 0 0!important}
+/* freelance: rzędy po 2 */
+.vgrid{max-width:900px;margin-left:auto;margin-right:auto}
+.vt{flex-basis:calc((100% - 32px)/2)!important}
+.vt:nth-child(3n+2){margin-top:0}
+.vt:nth-child(even){margin-top:48px}
+.vt-wide{flex-basis:100%!important;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:center;margin-top:24px!important}
+.vt-wide figcaption{margin-top:0}
+@media (max-width:560px){.vt,.vt-wide{flex-basis:100%!important}.vt-wide{display:block}.vt:nth-child(even){margin-top:0}}
+/* suwak: podpowiedź */
+.ba .handle:after{transition:transform .3s}
+.ba:not(.used) .handle:before{content:"";position:absolute;top:50%;left:50%;width:50px;height:50px;margin:-25px 0 0 -25px;border-radius:50%;border:2px solid var(--cream);animation:bapulse 2.2s ease-out infinite;pointer-events:none}
+@keyframes bapulse{0%{transform:scale(1);opacity:.85}100%{transform:scale(1.8);opacity:0}}
+.bahint{color:var(--bordo);letter-spacing:.06em}
+@media (prefers-reduced-motion:reduce){.ba:not(.used) .handle:before{animation:none;opacity:.5;transform:scale(1.25)}}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
   .rv{opacity:1;transform:rotate(var(--r,0deg))}
@@ -520,12 +535,12 @@ ul.logos[aria-label="Marki partnerskie projektu"] li img[src*="bosko"],ul.logos[
           </div>
           <svg class="fr ink" viewBox="0 0 400 500" preserveAspectRatio="none"><use href="#rect"/></svg>
         </div>
-        <figcaption>Feed przed i po<span>przesuń suwak</span></figcaption>
+        <figcaption>Feed przed i po<span class="bahint">‹ przeciągnij, aby porównać ›</span></figcaption>
       </figure>
       <div>
         <h3 class="rv" style="font-size:clamp(40px,4.6vw,68px)">feed, który <em style="font-style:normal;color:var(--bordo)">ma styl</em></h3>
         <p class="story rv d1">Jesień 2026: edukacja o materiałach („Twoja skóra wie, z czego są Twoje majtki”), seria z lekarką, nabór testerek, opinie klientek i spójna typografia marki.</p>
-        <div class="ovals" style="grid-template-columns:repeat(3,minmax(0,1fr));margin-top:40px">
+        <div class="ovals" style="grid-template-columns:repeat(2,minmax(0,1fr));margin-top:40px;max-width:520px">
           <div class="ostat rv"><svg class="ink" viewBox="0 0 262 168" preserveAspectRatio="none" aria-hidden="true"><use href="#ovl"/></svg><b class="num"><span class="cnt" data-to="2.15" data-dec="2">2,15</span>%<s>z 1,25</s></b><span>zaangażowanie</span></div>
           <div class="ostat rv d1"><svg class="ink" viewBox="0 0 262 168" preserveAspectRatio="none" aria-hidden="true"><use href="#ovl"/></svg><b class="num"><span class="cnt" data-to="75">75</span><s>z 32</s></b><span>polubień, mediana</span></div>
           <div class="ostat rv d2"><svg class="ink" viewBox="0 0 262 168" preserveAspectRatio="none" aria-hidden="true"><use href="#ovl"/></svg><b class="num"><span class="cnt" data-to="17">17</span><s>z 2</s></b><span>komentarzy, mediana</span></div>
@@ -632,10 +647,6 @@ ul.logos[aria-label="Marki partnerskie projektu"] li img[src*="bosko"],ul.logos[
         <div class="pic v916"><video src="media/fl_pupa_besties.mp4" poster="media/fl_pupa_besties.jpg" muted loop playsinline preload="none" data-snd aria-label="Pupa Milano · event: Besties Talk × Relab"></video><button class="snd" type="button" aria-pressed="false"><i aria-hidden="true">♪</i><span>włącz dźwięk</span></button><a class="go" href="https://www.instagram.com/p/C92x3U3IcHB/" target="_blank" rel="noopener">zobacz ↗</a></div>
         <figcaption><span class="br">Pupa Milano · event</span><a href="https://www.instagram.com/p/C92x3U3IcHB/" target="_blank" rel="noopener"><b>Besties Talk × Relab</b></a><p>Pupa jako partner eventu podcastu Besties Talk w Relab Store: makijaże dla gości, różowa scenografia i produkty marki w kadrze.</p><span class="lnk"><a href="https://www.instagram.com/p/C92x3U3IcHB/" target="_blank" rel="noopener">zobacz na Instagramie ↗</a></span></figcaption>
       </figure>
-      <figure class="vt rv d2">
-        <div class="pic v916"><video src="media/fl_zalando_getthelook.mp4" poster="media/fl_zalando_getthelook.jpg" muted loop playsinline preload="none" data-snd aria-label="Zalando · wideo: Get the Look"></video><button class="snd" type="button" aria-pressed="false"><i aria-hidden="true">♪</i><span>włącz dźwięk</span></button><a class="go" href="https://www.zalando.pl/creator/07011cd6-2734-4b9c-a0af-22e18ad934c4/video/605c0940-1e92-4e77-8fee-78d585c326ab/" target="_blank" rel="noopener">zobacz ↗</a></div>
-        <figcaption><span class="br">Zalando · wideo</span><a href="https://www.zalando.pl/creator/07011cd6-2734-4b9c-a0af-22e18ad934c4/video/605c0940-1e92-4e77-8fee-78d585c326ab/" target="_blank" rel="noopener"><b>Get the Look</b></a><p>Jesienna stylizacja twórczyni ankasmietanka w formacie Get the Look: każdy element z filmu można kupić na Zalando.</p><span class="lnk"><a href="https://www.zalando.pl/creator/07011cd6-2734-4b9c-a0af-22e18ad934c4/video/605c0940-1e92-4e77-8fee-78d585c326ab/" target="_blank" rel="noopener">zobacz na Zalando ↗</a></span></figcaption>
-      </figure>
       <figure class="vt rv d0">
         <div class="pic v916"><video src="media/fl_lunaby_holly.mp4" poster="media/fl_lunaby_holly.jpg" muted loop playsinline preload="none" data-snd aria-label="Lunaby · kampania świąteczna: Holly Jolly"></video><button class="snd" type="button" aria-pressed="false"><i aria-hidden="true">♪</i><span>włącz dźwięk</span></button><a class="go" href="https://www.instagram.com/p/DSDQEYwjNBe/" target="_blank" rel="noopener">zobacz ↗</a></div>
         <figcaption><span class="br">Lunaby · kampania świąteczna</span><a href="https://www.instagram.com/p/DSDQEYwjNBe/" target="_blank" rel="noopener"><b>Holly Jolly</b></a><p>Świąteczna rolka piżamy Holly Jolly: pianki, kakao i radosny klimat, który podpowiada pomysł na prezent.</p><span class="cms"><span class="cm">„Ale klimat ❤️”</span><span class="cm">„Czuć święta 🎄”</span></span><span class="lnk"><a href="https://www.instagram.com/p/DSDQEYwjNBe/" target="_blank" rel="noopener">zobacz na Instagramie ↗</a></span></figcaption>
@@ -644,7 +655,11 @@ ul.logos[aria-label="Marki partnerskie projektu"] li img[src*="bosko"],ul.logos[
         <div class="pic v916"><video src="media/fl_lunaby_nela.mp4" poster="media/fl_lunaby_nela.jpg" muted loop playsinline preload="none" data-snd aria-label="Lunaby · jesień: Nela Peach Fuzz"></video><button class="snd" type="button" aria-pressed="false"><i aria-hidden="true">♪</i><span>włącz dźwięk</span></button><a class="go" href="https://www.instagram.com/p/DBiw9hmoaSz/" target="_blank" rel="noopener">zobacz ↗</a></div>
         <figcaption><span class="br">Lunaby · jesień</span><a href="https://www.instagram.com/p/DBiw9hmoaSz/" target="_blank" rel="noopener"><b>Nela Peach Fuzz</b></a><p>Spokojny, jesienny kadr: książka, herbata i piżama Nela w kolorze Peach Fuzz, zaproszenie na wyprzedaż.</p><span class="cms"><span class="cm">„Przepiękne piżamki po prostu cuda 😍”</span></span><span class="lnk"><a href="https://www.instagram.com/p/DBiw9hmoaSz/" target="_blank" rel="noopener">zobacz na Instagramie ↗</a></span></figcaption>
       </figure>
-    </div>
+      <figure class="vt vt-wide rv d2">
+        <div class="pic v916"><video src="media/fl_zalando_getthelook.mp4" poster="media/fl_zalando_getthelook.jpg" muted loop playsinline preload="none" data-snd aria-label="Zalando · wideo: Get the Look"></video><button class="snd" type="button" aria-pressed="false"><i aria-hidden="true">♪</i><span>włącz dźwięk</span></button><a class="go" href="https://www.zalando.pl/creator/07011cd6-2734-4b9c-a0af-22e18ad934c4/video/605c0940-1e92-4e77-8fee-78d585c326ab/" target="_blank" rel="noopener">zobacz ↗</a></div>
+        <figcaption><span class="br">Zalando · wideo</span><a href="https://www.zalando.pl/creator/07011cd6-2734-4b9c-a0af-22e18ad934c4/video/605c0940-1e92-4e77-8fee-78d585c326ab/" target="_blank" rel="noopener"><b>Get the Look</b></a><p>Jesienna stylizacja twórczyni ankasmietanka w formacie Get the Look: każdy element z filmu można kupić na Zalando.</p><span class="lnk"><a href="https://www.zalando.pl/creator/07011cd6-2734-4b9c-a0af-22e18ad934c4/video/605c0940-1e92-4e77-8fee-78d585c326ab/" target="_blank" rel="noopener">zobacz na Zalando ↗</a></span></figcaption>
+      </figure>
+</div>
   </div>
 </section>
 
@@ -737,6 +752,9 @@ ul.logos[aria-label="Marki partnerskie projektu"] li img[src*="bosko"],ul.logos[
     s+=`<text x="${x0}" y="${H-8}" text-anchor="middle" fill="#8A6A60">${lab}</text>`;});
   document.getElementById('chart').innerHTML=s+'</svg>';
   const ba=document.getElementById('ba'),r=ba.querySelector('input');
+  const mark=()=>ba.classList.add('used');['pointerdown','touchstart','keydown'].forEach(ev=>r.addEventListener(ev,mark,{once:true}));
+  if(!reduce&&'IntersectionObserver' in window){let n=0;const nudge=()=>{if(ba.classList.contains('used')||n>1)return;n++;const t0=performance.now(),D=1800;(function f(t){if(ba.classList.contains('used'))return;const k=Math.min((t-t0)/D,1);const v=50+Math.sin(k*Math.PI*2)*14*(1-k*0.3);ba.style.setProperty('--p',v+'%');r.value=v;if(k<1)requestAnimationFrame(f);else{ba.style.setProperty('--p','50%');r.value=50}})(t0);};
+    const bio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){setTimeout(nudge,600);setTimeout(nudge,6000);bio.disconnect()}}),{threshold:.5});bio.observe(ba)}
   r.addEventListener('input',()=>ba.style.setProperty('--p',r.value+'%'));
   const fmt=(v,d)=>d?v.toFixed(d).replace('.',','):Math.round(v).toLocaleString('pl-PL');
   function count(el){const to=+el.dataset.to,d=+(el.dataset.dec||0);if(reduce){el.textContent=fmt(to,d);return}const t0=performance.now();(function f(t){const p=Math.min((t-t0)/1500,1);el.textContent=fmt(to*(1-Math.pow(1-p,3)),d);if(p<1)requestAnimationFrame(f)})(t0)}
