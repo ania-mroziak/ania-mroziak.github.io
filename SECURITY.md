@@ -1,7 +1,7 @@
 # Bezpieczeństwo
 
 ## Zasady
-- Repozytorium jest **prywatne** i takie zostaje.
+- Repozytorium jest **publiczne** (decyzja Ani z 20.11.2026), bo z niego działa strona GitHub Pages. Nie trafiają tu materiały objęte NDA ani dane, których nie ma w publicznych postach.
 - **Do repo nigdy nie trafiają** klucze, tokeny, hasła ani pliki `credentials.json` / `token*.json`. Pilnują tego `.gitignore`, hook `pre-commit` (gitleaks i własne wzorce) oraz skan gitleaks w GitHub Actions przy każdej wysyłce i co tydzień.
 - GitHub Actions działają z minimalnymi uprawnieniami (`contents: read`), a akcje są przypięte do konkretnych commitów (SHA). Ich aktualizacje przychodzą od Renovate.
 - Historii nie przepisujemy: żadnego `git push --force`.

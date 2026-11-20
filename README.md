@@ -1,11 +1,11 @@
-# Portfolio Ani Mroziak (repozytorium prywatne)
+# Portfolio Ani Mroziak
 
 Strona-portfolio Social Media Managerki: realizacje dla Uzdrovisco, Pantalones, marek beauty i modowych, Rozwojowej Mamy, archiwum Mentos i Chupa Chups oraz zespół agentów AI.
 
-> 🔒 Repozytorium musi zostać **prywatne**.
+> 🌐 Strona: **https://ania-mroziak.github.io** (GitHub Pages, publiczna z decyzji Ani z 20.11.2026).
 
 ## Jak obejrzeć
-Otwórz `index.html` w przeglądarce (dwuklik po pobraniu repozytorium). Strona działa bez internetu, poza linkami do Instagrama.
+Wejdź na https://ania-mroziak.github.io albo otwórz `index.html` w przeglądarce po pobraniu repozytorium.
 
 ## Co jest gdzie
 | Folder | Zawartość |
