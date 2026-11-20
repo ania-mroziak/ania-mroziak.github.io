@@ -342,6 +342,12 @@ ul.logos[aria-label="Marki partnerskie projektu"] li img[src*="bosko"],ul.logos[
 @keyframes bapulse{0%{transform:scale(1);opacity:.85}100%{transform:scale(1.8);opacity:0}}
 .bahint{color:var(--bordo);letter-spacing:.06em}
 .nw{white-space:nowrap}
+.dbw h3{margin-bottom:28px}
+.dbw .tile figcaption{margin-top:12px}
+.dbtxt{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px 56px;margin-top:40px;align-items:start}
+.dbtxt .cred{margin-top:4px}
+.dbtxt .story{margin-top:0}
+@media (max-width:760px){.dbtxt{grid-template-columns:minmax(0,1fr)}}
 @media (prefers-reduced-motion:reduce){.ba:not(.used) .handle:before{animation:none;opacity:.5;transform:scale(1.25)}}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -675,14 +681,10 @@ ul.logos[aria-label="Marki partnerskie projektu"] li img[src*="bosko"],ul.logos[
     <p class="lead">Produkowałam sesje zdjęciowe kampanii na zlecenie agencji Labcon (Group One).</p>
   </div></aside>
   <div class="main paper">
-    <div class="two" style="align-items:center">
+    <div class="dbw">
+      <h3 class="rv" style="font-size:clamp(44px,5vw,76px)"><span class="nw">z buntu</span> <em style="font-style:normal;color:var(--bordo)">najlepsze</em></h3>
       <figure class="tile rv" style="margin:0"><div class="pic" style="aspect-ratio:16/9;background:#000"><video src="video/doctorbrew_kampania.mp4" poster="img/doctorbrew_kampania.jpg" muted loop playsinline preload="none" data-snd aria-label="Film kampanii Doctor Brew: Z buntu najlepsze"></video><button class="snd" type="button" aria-pressed="false"><i aria-hidden="true">♪</i><span>włącz dźwięk</span></button></div><figcaption><b>Doctor Brew · <span class="nw">Z buntu</span> najlepsze</b>film kampanii, 2021</figcaption></figure>
-      <div>
-        <h3 class="rv" style="font-size:clamp(44px,5vw,76px)"><span class="nw">z buntu</span> <em style="font-style:normal;color:var(--bordo)">najlepsze</em></h3>
-        <div class="cred rv d1"><b>produkcja</b><span>Ania Mroziak</span><b>zdjęcia</b><span>Zuza Krajewska</span><b>klient</b><span>Doctor Brew</span></div>
-        <p class="story rv d2">Relaunch Doctor Brew: cztery piwa, kampania digital, mural na Nowym Świecie <span class="nw">i odważne</span> zdjęcia par. Post <span class="nw">z parą</span> gejów zebrał falę hejtu, <span class="nw">a marka</span> zamieniła go <span class="nw">w pomoc:</span> po 10 zł za każdy hejterski komentarz dla Kampanii Przeciw Homofobii, łącznie 30 tys. zł.</p>
-        <div class="lk rv d3"><a href="https://biznes.newseria.pl/biuro-prasowe/kultura/doctor-brew-wraca-z-nowa,b285283999" target="_blank" rel="noopener">Newseria ↗</a><a href="https://www.wirtualnemedia.pl/artykul/doctor-brew-z-buntu-najlepsze" target="_blank" rel="noopener">Wirtualne Media ↗</a><a href="https://www.wirtualnemedia.pl/artykul/doctor-brew-homofobiczny-hejt-kampania-przeciw-homofobii" target="_blank" rel="noopener">hejt <span class="nw">w pomoc</span> ↗</a></div>
-      </div>
+      <div class="dbtxt"><div class="cred rv d1"><b>produkcja</b><span>Ania Mroziak</span><b>zdjęcia</b><span>Zuza Krajewska</span><b>klient</b><span>Doctor Brew</span></div><div><p class="story rv d2">Relaunch Doctor Brew: cztery piwa, kampania digital, mural na Nowym Świecie <span class="nw">i odważne</span> zdjęcia par. Post <span class="nw">z parą</span> gejów zebrał falę hejtu, <span class="nw">a marka</span> zamieniła go <span class="nw">w pomoc:</span> po 10 zł za każdy hejterski komentarz dla Kampanii Przeciw Homofobii, łącznie 30 tys. zł.</p><div class="lk rv d3"><a href="https://biznes.newseria.pl/biuro-prasowe/kultura/doctor-brew-wraca-z-nowa,b285283999" target="_blank" rel="noopener">Newseria ↗</a><a href="https://www.wirtualnemedia.pl/artykul/doctor-brew-z-buntu-najlepsze" target="_blank" rel="noopener">Wirtualne Media ↗</a><a href="https://www.wirtualnemedia.pl/artykul/doctor-brew-homofobiczny-hejt-kampania-przeciw-homofobii" target="_blank" rel="noopener">hejt <span class="nw">w pomoc</span> ↗</a></div></div></div>
     </div>
   </div>
 </section>
